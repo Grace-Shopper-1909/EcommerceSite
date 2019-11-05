@@ -1,6 +1,6 @@
 'use strict'
 
-const {db, Product, User} = require('../server/db')
+const {db, Product, User, Cart} = require('../server/db')
 const {green, red} = require('chalk')
 
 const users = [
@@ -120,6 +120,29 @@ const products = [
   }
 ]
 
+const carts = [
+  {
+    date: '2019-2-5',
+    total: 20
+  },
+  {
+    date: '2019-12-5',
+    total: 50
+  },
+  {
+    date: '2019-11-5',
+    total: 10
+  },
+  {
+    date: '2019-2-2',
+    total: 22
+  },
+  {
+    date: '2019-2-1',
+    total: 18
+  }
+]
+
 // const orders = [
 //   {
 //     date: '2018-2-5',
@@ -178,12 +201,16 @@ async function seed() {
   console.log('db synced!')
 
   await Promise.all(
+    carts.map(cart => {
+      return Cart.create(cart)
+    }),
     products.map(product => {
       return Product.create(product)
     }),
     users.map(user => {
       return User.create(user)
     })
+
     // orders.map(order => {
     //   return Order.create(order)
     // })

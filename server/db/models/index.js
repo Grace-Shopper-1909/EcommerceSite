@@ -1,8 +1,7 @@
 const User = require('./user')
 const Product = require('./product')
+const Cart = require('./cart')
 const db = require('../db')
-// const Order = db.model('order')
-// const Cart = db.model('cart')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -12,8 +11,8 @@ const db = require('../db')
  */
 
 // Many to many relationship between users & products which will create the cart table
-Product.belongsToMany(User, {through: 'cart'})
-User.belongsToMany(Product, {through: 'cart'})
+// Product.belongsToMany(User, {through: 'cart'})
+// User.belongsToMany(Product, {through: 'cart'})
 
 // One to One Orders
 // User.hasOne(Order)
@@ -21,13 +20,13 @@ User.belongsToMany(Product, {through: 'cart'})
 
 // One to One Cart: User Relationship
 // creates cartId on user model
-// User.belongsTo(Cart)
-// Cart.hasOne(User)
+User.belongsTo(Cart)
+Cart.hasOne(User)
 
 // One to Many Cart: Product & Cart
 // creates cartId on product model
-// Product.belongsTo(Cart)
-// Cart.hasMany(Product)
+Product.belongsTo(Cart)
+Cart.hasMany(Product)
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
@@ -38,5 +37,6 @@ User.belongsToMany(Product, {through: 'cart'})
 module.exports = {
   db,
   User,
-  Product
+  Product,
+  Cart
 }

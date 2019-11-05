@@ -10,7 +10,7 @@ const Order = db.define('order', {
     type: Sequelize.STRING,
     validate: {
       notEmpty: true,
-      isIn: [['processing', 'shipped', 'delivered', 'refunded']]
+      isIn: [['not ordered', 'processing', 'shipped', 'delivered', 'refunded']]
     }
   },
   quantity: {
