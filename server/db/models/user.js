@@ -3,10 +3,27 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
+  firstName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
+  lastName: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
+  },
   email: {
     type: Sequelize.STRING,
     unique: true,
-    allowNull: false
+    allowNull: false,
+    validate: {
+      isEmail: true
+    }
   },
   password: {
     type: Sequelize.STRING,
@@ -14,6 +31,14 @@ const User = db.define('user', {
     // This is a hack to get around Sequelize's lack of a "private" option.
     get() {
       return () => this.getDataValue('password')
+    }
+  },
+  role: {
+    type: Sequelize.STRING,
+    defaultValue: 'user',
+    validate: {
+      notEmpty: true,
+      isIn: [['admin', 'user']]
     }
   },
   salt: {
@@ -28,8 +53,6 @@ const User = db.define('user', {
     type: Sequelize.STRING
   }
 })
-
-module.exports = User
 
 /**
  * instanceMethods
@@ -68,3 +91,5 @@ User.beforeUpdate(setSaltAndPassword)
 User.beforeBulkCreate(users => {
   users.forEach(setSaltAndPassword)
 })
+
+module.exports = User
