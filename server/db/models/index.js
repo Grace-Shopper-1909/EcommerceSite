@@ -2,7 +2,7 @@ const User = require('./user')
 const Product = require('./product')
 const db = require('../db')
 // const Order = db.model('order')
-const Cart = db.model('cart')
+// const Cart = db.model('cart')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -11,11 +11,9 @@ const Cart = db.model('cart')
  *    BlogPost.belongsTo(User)
  */
 
-Product.belongsTo(User)
-
 // Many to many relationship between users & products which will create the cart table
-// Product.belongsToMany(User, {through: 'cart'})
-// User.belongsToMany(Product, {through: 'cart'})
+Product.belongsToMany(User, {through: 'cart'})
+User.belongsToMany(Product, {through: 'cart'})
 
 // One to One Orders
 // User.hasOne(Order)
@@ -38,8 +36,7 @@ Product.belongsTo(User)
  * instead of: const User = require('../db/models/user')
  */
 module.exports = {
+  db,
   User,
-  Product,
-  Order,
-  Cart
+  Product
 }
