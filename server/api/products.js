@@ -6,6 +6,7 @@ router.get('/', async (req, res, next) => {
     const products = await Product.findAll()
     res.send(products)
   } catch (error) {
+    console.error(error)
     next(error)
   }
 })
@@ -15,6 +16,7 @@ router.get('/:productId', async (req, res, next) => {
     const product = await Product.findByPk(req.params.productId)
     res.send(product)
   } catch (error) {
+    console.error(error)
     next(error)
   }
 })
