@@ -1,5 +1,11 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Muli', sans-serif;
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  text-align: center;
 }
 
 a {
@@ -18,4 +24,48 @@ nav a {
 form div {
   margin: 1em;
   display: inline-block;
+}
+
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+}
+
+.single {
+  display: flex;
+  flex: 1;
+  margin: 2%;
+  border: 1px solid #d8d8d8;
+  flex-direction: column;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.product-title {
+  text-align: left;
+  color: black;
+  font-size: 1.2vw;
+}
+
+.product-image {
+  max-width: 15vw;
+  max-height: 15vh;
+  padding: 5%;
+  align-self: center;
+}
+
+.add-to-cart {
+  text-align: center;
+  align-self: center;
+  border-radius: 10px;
+  background-color: black;
+  width: 8vw;
+  height: 6vh;
+  font-size: 1vw;
+  border: 1px solid white;
+  color: white;
+  justify-self: center;
+  margin: 1%;
 }
