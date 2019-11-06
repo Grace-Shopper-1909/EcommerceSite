@@ -15,3 +15,36 @@ router.get('/', async (req, res, next) => {
     next(err)
   }
 })
+
+router.get('/:userId', async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.params.userId)
+    res.send(user)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.post('/', async (req, res, next) => {
+  try {
+    const newUser = await User.create(req.body)
+    res.send(newUser)
+  } catch (error) {
+    next(error)
+  }
+})
+
+router.put('/:userId', async (req, res, next) => {
+  try {
+    const user = await User.update(req.body, {
+      where: {
+        id: req.params.userId
+      },
+      returning: true
+    })
+    console.log('put route got user')
+    res.json(user[0])
+  } catch (error) {
+    next(error)
+  }
+})
