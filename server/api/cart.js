@@ -24,6 +24,18 @@ router.get('/', async (req, res) => {
   }
 })
 
+// creates new row in the cart with all params that's specified on req.body
+
+router.post('/', async (req, res) => {
+  console.log('********req.body:', req.body)
+  try {
+    const newCart = await Cart.create(req.body)
+    res.json(newCart)
+  } catch (error) {
+    res.send(error)
+  }
+})
+
 // deletes product by id from the cart for specified user (which id is on the body of request):
 
 router.delete('/:id', (req, res, next) => {
@@ -42,18 +54,8 @@ router.delete('/:id', (req, res, next) => {
   }
 })
 
-// // creates new row in the cart with all params that's specified on req.body
-// router.post('/', async (req, res) => {
-//   try {
-//     const newCart = await Cart.create(req.body)
-//     res.json(newCart)
-//   } catch (error) {
-//     res.send(error)
-//   }
-// })
-
 // updates the cart (to change the quantity of item)
-router.put('/', async (req, res, next) => {
+router.put('/', (req, res, next) => {
   Cart.findOne({
     where: {productId: req.body.productId, userId: req.body.userId}
   })
