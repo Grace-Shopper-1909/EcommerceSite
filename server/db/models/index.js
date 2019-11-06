@@ -9,24 +9,14 @@ const db = require('../db')
  *
  *    BlogPost.belongsTo(User)
  */
+// cart.User = {
+//   status: 'active'
+// }
 
+// User.addCart()
 // Many to many relationship between users & products which will create the cart table
-// Product.belongsToMany(User, {through: 'cart'})
-// User.belongsToMany(Product, {through: 'cart'})
-
-// One to One Orders
-// User.hasOne(Order)
-// Product.belongsTo(Order)
-
-// One to One Cart: User Relationship
-// creates cartId on user model
-User.belongsTo(Cart)
-Cart.hasOne(User)
-
-// One to Many Cart: Product & Cart
-// creates cartId on product model
-Product.belongsTo(Cart)
-Cart.hasMany(Product)
+Product.belongsToMany(User, {through: Cart})
+User.belongsToMany(Product, {through: Cart})
 
 /**
  * We'll export all of our models here, so that any time a module needs a model,
