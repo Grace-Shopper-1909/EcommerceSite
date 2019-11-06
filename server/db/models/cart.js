@@ -1,17 +1,20 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-const Product = require('../models/product')
 
 const Cart = db.define('cart', {
   date: {
     type: Sequelize.DATE,
     defaultValue: Sequelize.NOW
   },
+  isPurchasd: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
   status: {
     type: Sequelize.STRING,
     validate: {
       notEmpty: true,
-      isIn: [['not ordered', 'processing', 'shipped', 'delivered', 'refunded']]
+      isIn: [['pending', 'processing', 'shipped', 'delivered', 'refunded']]
     }
   },
   quantity: {
@@ -41,11 +44,5 @@ const Cart = db.define('cart', {
     defaultValue: null
   }
 })
-
-// Get Products
-Cart.prototype.getTotal = function() {}
-
-// Get Total
-Cart.prototype.getTotal = function() {}
 
 module.exports = Cart
