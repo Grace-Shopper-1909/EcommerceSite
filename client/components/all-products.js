@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {getProducts} from '../store/products'
 import {addProduct} from '../store/cart'
 import ProductGrid from './product-grid'
+import Title from './title'
 
 class AllProducts extends React.Component {
   componentDidMount() {
@@ -13,9 +14,7 @@ class AllProducts extends React.Component {
 
     return (
       <div>
-        <div className="row">
-          <h1>All Products</h1>
-        </div>
+        <Title title="All Products" />
 
         <div className="row">
           <ProductGrid

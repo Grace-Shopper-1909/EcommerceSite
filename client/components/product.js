@@ -6,18 +6,21 @@ const Product = props => {
   console.log('Product props.prod.addproduct', props.addProduct)
   const result = props.addProduct(props.prod)
   console.log('for product add button - the addProduct():', result)
+  const product = props.prod
   return (
     <React.Fragment>
-      <React.Fragment className="product-title">
-        <h3>{props.prod.brand}</h3>
-        <h3>{props.prod.name}</h3>
-        <h3>${props.prod.price / 100}</h3>
-      </React.Fragment>
-      <img src={props.prod.imageUrl} className="product-image" />
+      <div className="product-title">
+        <h3>{product.brand}</h3>
+
+        <h3 id="bold">{name}</h3>
+
+        <h3>${product.price / 100}</h3>
+      </div>
+      <img src={product.imageUrl} className="product-image" />
       <button
         className="add-to-cart"
         type="button"
-        onClick={() => props.addProduct(props.prod)}
+        onClick={() => props.addProduct(product)}
       >
         Add To Cart
       </button>
