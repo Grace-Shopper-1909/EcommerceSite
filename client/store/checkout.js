@@ -16,7 +16,8 @@ const constants = {
  * INITIAL STATE
  */
 const initalState = {
-  products: []
+  products: [],
+  order: {}
 }
 
 /**
@@ -69,6 +70,22 @@ export const updateOrder = productId => async dispatch => {
  */
 export default function(state = initalState, action) {
   switch (action.type) {
+    case constants.GOT_PRODUCTS:
+      return {...state, products: action.products}
+    case constants.CREATED_ORDER:
+      const newOrder = {
+        firstName: action.val.firstName,
+        lastName: action.val.lastName,
+        email: action.val.email,
+        quantity: action.val.quantity,
+        shippingAddress: action.val.shippingAddress,
+        billingAddress: action.val.billingAddress,
+        productId: action.val.productId,
+        userId: action.valuserId
+      }
+      return {...state, order: {...state.order, newOrder}}
+    case constants.UPDATED_ORDER:
+      return {...state, order: action.val}
     default:
       return state
   }
