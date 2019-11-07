@@ -2,6 +2,7 @@ const express = require('express')
 const router = express.Router()
 const {Cart} = require('../db/models')
 router.use(express.json())
+
 // gets all producs in the cart for specified user:
 
 router.get('/', async (req, res) => {
@@ -22,6 +23,23 @@ router.get('/', async (req, res) => {
       console.log(error)
     }
   }
+})
+
+// changes status of isPurchased to true, updates shipping and billing address:
+//
+router.post('/checkout', (req, res, next) => {
+  Cart.findOne({
+    where: {productId: req.body.productId, userId: req.body.userId}
+  })
+    .then(cart =>
+      cart.update({
+        isPurchasd: true,
+        shippingAddress: req.body.shippingAddress,
+        deliveryAddress: req.body.deliveryAddress
+      })
+    )
+    .then(cart => res.json(cart))
+    .catch(next)
 })
 
 // creates new row in the cart with all params that's specified on req.body
