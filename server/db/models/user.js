@@ -3,20 +3,6 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const User = db.define('user', {
-  firstName: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
-  lastName: {
-    type: Sequelize.STRING,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
-  },
   email: {
     type: Sequelize.STRING,
     unique: true,
@@ -35,10 +21,10 @@ const User = db.define('user', {
   },
   role: {
     type: Sequelize.STRING,
-    defaultValue: 'guest',
+    defaultValue: 'user',
     validate: {
       notEmpty: true,
-      isIn: [['admin', 'user', 'guest']]
+      isIn: [['admin', 'user']]
     }
   },
   salt: {
