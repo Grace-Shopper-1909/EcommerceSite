@@ -6,7 +6,7 @@ import axios from 'axios'
 const constants = {
   GOT_PRODUCTS: 'GOT_PRODUCTS',
   CREATED_ORDER: 'CREATED_ORDER',
-  PURCHASED_ORDER: 'PURCHASE_ORDER',
+  MARKED_PURCHASED: 'MARKED_PURCHASED',
   ADDED_USER: 'ADDED_USER',
   UPDATED_ORDER: 'UPDATED_ORDER',
   REMOVED_PRODUCT: 'REMOVED_PRODUCT',
@@ -16,22 +16,14 @@ const constants = {
 /**
  * INITIAL STATE
  */
-const initalState = {
-  products: [],
-  cart: {}
-}
+const initalState = []
 
 /**
  * ACTION CREATORS
  */
-const gotProducts = products => ({
-  type: constants.GOT_PRODUCTS,
-  products
-})
-
-const createdOrder = cart => ({
-  type: constants.CREATED_ORDER,
-  cart
+const markedPurchased = order => ({
+  type: constants.MARKED_PURCHASED,
+  order
 })
 
 const updatedOrder = cart => ({
@@ -42,14 +34,6 @@ const updatedOrder = cart => ({
 /**
  * THUNK CREATORS
  */
-export const getProducts = () => async dispatch => {
-  try {
-    const res = await axios.get('/api/cart/')
-    dispatch(gotProducts(res.data))
-  } catch (err) {
-    console.error(err)
-  }
-}
 
 export const removeProduct = productId => async dispatch => {
   await axios.delete(`/api/cart/${productId}`)
@@ -66,9 +50,11 @@ export const updateOrder = productId => async dispatch => {
   dispatch(updatedOrder(res.data))
 }
 
-export const purchaseOrder = () => async dispatch => {
+export const markPurchased = () => async dispatch => {
+  const products = await axios.get(`api/cart`)
+
   const res = await axios.post(`api/cart/checkout`)
-  dispatch(updatedOrder(res.data))
+  dispatch(markedPurchased(res.data))
 }
 /**
  * REDUCER
