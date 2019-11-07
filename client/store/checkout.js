@@ -6,6 +6,7 @@ import axios from 'axios'
 const constants = {
   GOT_PRODUCTS: 'GOT_PRODUCTS',
   CREATED_ORDER: 'CREATED_ORDER',
+  PURCHASED_ORDER: 'PURCHASE_ORDER',
   ADDED_USER: 'ADDED_USER',
   UPDATED_ORDER: 'UPDATED_ORDER',
   REMOVED_PRODUCT: 'REMOVED_PRODUCT',
@@ -17,7 +18,7 @@ const constants = {
  */
 const initalState = {
   products: [],
-  order: {}
+  cart: {}
 }
 
 /**
@@ -28,22 +29,22 @@ const gotProducts = products => ({
   products
 })
 
-const createdOrder = order => ({
+const createdOrder = cart => ({
   type: constants.CREATED_ORDER,
-  order
+  cart
 })
 
-const updatedOrder = order => ({
-  type: constants.UPDATED_USER,
-  order
+const updatedOrder = cart => ({
+  type: constants.UPDATED_ORDER,
+  cart
 })
+
 /**
  * THUNK CREATORS
  */
 export const getProducts = () => async dispatch => {
   try {
     const res = await axios.get('/api/cart/')
-    console.log('response', res)
     dispatch(gotProducts(res.data))
   } catch (err) {
     console.error(err)
@@ -56,15 +57,19 @@ export const removeProduct = productId => async dispatch => {
 }
 
 export const createOrder = () => async dispatch => {
-  await axios.post(`/api/cart`)
-  dispatch(createdOrder())
+  const res = await axios.post(`/api/cart`)
+  dispatch(createdOrder(res.data))
 }
 
 export const updateOrder = productId => async dispatch => {
-  await axios.put(`/api/cart/${productId}`)
-  dispatch(updatedOrder())
+  const res = await axios.put(`/api/cart/${productId}`)
+  dispatch(updatedOrder(res.data))
 }
 
+export const purchaseOrder = () => async dispatch => {
+  const res = await axios.post(`api/cart/checkout`)
+  dispatch(updatedOrder(res.data))
+}
 /**
  * REDUCER
  */
@@ -73,7 +78,7 @@ export default function(state = initalState, action) {
     case constants.GOT_PRODUCTS:
       return {...state, products: action.products}
     case constants.CREATED_ORDER:
-      const newOrder = {
+      const newCart = {
         firstName: action.val.firstName,
         lastName: action.val.lastName,
         email: action.val.email,
@@ -83,9 +88,9 @@ export default function(state = initalState, action) {
         productId: action.val.productId,
         userId: action.valuserId
       }
-      return {...state, order: {...state.order, newOrder}}
+      return {...state, cart: {...state.cart, newCart}}
     case constants.UPDATED_ORDER:
-      return {...state, order: action.val}
+      return {...state, cart: action.val}
     default:
       return state
   }
