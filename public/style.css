@@ -2,13 +2,27 @@ body {
   font-family: 'Muli', sans-serif;
   padding: 0;
   margin: 0;
+  font-weight: normal;
+  color: black;
 }
 
+h1 {
+  text-align: center;
+  font-size: 1.75vw;
+}
 h2 {
   text-align: center;
 }
 h3 {
   margin: 0;
+  text-align: left;
+  font-weight: normal;
+}
+h4 {
+  margin: 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size: 1.5vw;
 }
 a {
   text-decoration: none;
@@ -18,14 +32,48 @@ label {
   display: block;
 }
 
-nav a {
-  display: inline-block;
-  margin: 1em;
+link {
+  text-decoration: none;
+}
+
+link:hover {
+  border-bottom: 2px pink solid;
 }
 
 form div {
   margin: 1em;
   display: inline-block;
+}
+.row {
+  display: flex;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+}
+.flex-start {
+  justify-content: flex-start;
+}
+.space-between {
+  justify-content: space-between;
+}
+.nav {
+  display: flex;
+  padding: 10px;
+  align-items: center;
+}
+
+.nav-links {
+  font-size: 1vw;
+  text-decoration: none;
+  color: black;
+  padding-left: 20px;
+  align-items: center;
+  text-align: left;
+}
+
+.right-nav {
+  display: flex;
 }
 
 .grid {
@@ -38,17 +86,17 @@ form div {
 .single {
   display: flex;
   flex: 1;
-  margin: 2%;
+  margin: 1.5%;
+  padding: 1.5%;
   border: 1px solid #d8d8d8;
   flex-direction: column;
-  /* align-items: center; */
-  /* justify-content: center; */
 }
 
 .product-title {
   text-align: left;
   color: black;
-  font-size: 1.2vw;
+  margin: 10px;
+  font-size: 1vw;
 }
 
 .product-image {
@@ -70,4 +118,53 @@ form div {
   color: white;
   justify-self: center;
   margin: 1%;
+}
+
+#cart-icon {
+  max-height: 2vw;
+  max-width: 2vw;
+  padding-left: 10px;
+}
+
+#logo {
+  width: 12vw;
+}
+
+#register {
+  font-size: 1.4vw;
+  text-decoration: none;
+  color: black;
+}
+
+#black {
+  background-color: black;
+  color: white;
+  height: 50px;
+  padding: 0.75%;
+}
+
+#rainbow {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background-image: linear-gradient(
+    to right,
+    #4fa2f9,
+    #7a36b9,
+    #c039ba,
+    /* #cb5a81, */ #eb9a28
+  );
+  height: 50px;
+  padding: 15px;
+  color: white;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+  align-self: center;
+}
+
+#bold {
+  font-weight: bold;
+}
+
+#hero {
+  width: 100%;
 }

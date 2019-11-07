@@ -20,9 +20,62 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
+        test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        resolve: {
+          extensions: ['.js', '.jsx']
+        },
+        use: {
+          loader: 'babel-loader'
+        }
+      },
+      // Font loader
+      {
+        test: /\.(ttf|eot|woff|woff2|svg)$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: 'assets/fonts/[name].[ext]'
+          }
+        }
+      },
+      // Image loader
+      {
+        test: /\.(png|jpe?g|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: 'assets/images/[name].[ext]'
+            }
+          }
+        ]
+      },
+      // Favicon loader
+      {
+        test: /\.(ico)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]'
+            }
+          }
+        ]
+      },
+      // CSS Loader
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      // HTML Loader
+      {
+        test: /\.html$/,
+        use: [
+          {
+            loader: 'html-loader'
+          }
+        ]
       }
     ]
   }

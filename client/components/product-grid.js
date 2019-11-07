@@ -3,7 +3,6 @@ import React from 'react'
 import Product from './product'
 
 const ProductGrid = props => {
-  console.log(props)
   return (
     <div className="grid">
       {props.products.map(product => (
