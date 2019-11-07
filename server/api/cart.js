@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const {Cart} = require('../db/models')
+const {Cart, User, Product} = require('../db/models')
 router.use(express.json())
 
 // gets all producs in the cart for specified user:
@@ -26,7 +26,7 @@ router.get('/', async (req, res) => {
 })
 
 // changes status of isPurchased to true, updates shipping and billing address:
-//
+
 router.post('/checkout', (req, res, next) => {
   Cart.findOne({
     where: {productId: req.body.productId, userId: req.body.userId}
@@ -43,14 +43,22 @@ router.post('/checkout', (req, res, next) => {
 })
 
 // creates new row in the cart with all params that's specified on req.body
+// finds user by req.body.userId, if the user doesn't exist, it creates one (with assigned role as 'guest' by default, as specified in user model )
 
 router.post('/', async (req, res) => {
-  console.log('********req.body:', req.body)
   try {
-    const newCart = await Cart.create(req.body)
+    await User.findOrCreate({
+      where: {
+        id: req.body.userId,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email
+      }
+    })
+    const newCart = Cart.create(req.body)
     res.json(newCart)
   } catch (error) {
-    res.send(error)
+    console.log(error)
   }
 })
 
