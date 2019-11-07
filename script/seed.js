@@ -5,41 +5,31 @@ const {green, red} = require('chalk')
 
 const users = [
   {
-    firstName: 'Hermione',
-    lastName: 'Granger',
     email: 'hg@hogwarts.com',
     password: '1234'
   },
   {
-    firstName: 'Harry',
-    lastName: 'Potter',
     email: 'hp@hogwarts.com',
     password: '1234'
   },
   {
-    firstName: 'Ron',
-    lastName: 'Weasley',
     email: 'rw@hogwarts.com',
     role: 'admin',
     password: '1234'
   },
   {
-    firstName: 'Raven',
-    lastName: 'Darkhölme',
     email: 'mistique@shield.com',
+    role: 'user',
     password: '1234'
   },
   {
-    firstName: 'James',
-    lastName: 'Howlett',
     email: 'jamesh@yahoo.com',
     role: 'admin',
     password: '1234'
   },
   {
-    firstName: 'Gamora',
-    lastName: 'Unkown',
     email: 'gog@yahoo.com',
+    role: 'user',
     password: '1234'
   }
 ]
