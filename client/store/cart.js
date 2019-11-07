@@ -67,7 +67,7 @@ export const deleteProduct = productId => async dispatch => {
 // how does this work with magic methods? setProduct?
 export const addProduct = productId => async dispatch => {
   try {
-    const res = await axios.post(`/api/cart${productId}`)
+    const res = await axios.post(`/api/cart/${productId}`)
     console.log('axios data add', res)
     return dispatch(addedProduct(productId, res.data))
   } catch (err) {
@@ -77,7 +77,7 @@ export const addProduct = productId => async dispatch => {
 
 export const updateProduct = productId => async dispatch => {
   try {
-    const res = await axios.put(`/api/cart${productId}`)
+    const res = await axios.put(`/api/cart/${productId}`)
     console.log('axios data add', res)
     return dispatch(updatedProduct(productId, res.data))
   } catch (err) {
