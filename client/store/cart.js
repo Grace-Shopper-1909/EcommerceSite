@@ -33,9 +33,9 @@ const deletedProduct = productId => ({
 //   product
 // })
 
-const addedProduct = product => ({
+const addedProduct = userProdObj => ({
   type: ADDED_PRODUCT,
-  product
+  userProdObj
 })
 
 const updatedProduct = (productId, product) => ({
@@ -77,10 +77,10 @@ export const deleteProduct = productId => async dispatch => {
 //   }
 // }
 
-export const addProduct = product => async dispatch => {
-  console.log('product passed into thunk creator', product)
+export const addProduct = userProdObj => async dispatch => {
+  console.log('product passed into thunk creator', userProdObj)
   try {
-    const res = await axios.post(`/api/cart`, product)
+    const res = await axios.post(`/api/cart`, userProdObj)
     console.log('axios data add', res)
     return dispatch(addedProduct(res.data))
   } catch (err) {
