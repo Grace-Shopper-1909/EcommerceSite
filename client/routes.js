@@ -60,6 +60,7 @@ const mapState = state => {
 const mapDispatch = dispatch => {
   return {
     loadInitialData() {
+      console.log('dispatch(me) in mapDispatch routes file', dispatch(me))
       dispatch(me())
     }
   }

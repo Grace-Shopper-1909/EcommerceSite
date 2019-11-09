@@ -27,61 +27,56 @@ router.get('/', async (req, res) => {
 
 // changes status of isPurchased to true, updates shipping and billing address:
 
-router.post('/checkout', (req, res, next) => {
-  Cart.findOne({
-    where: {productId: req.body.productId, userId: req.body.userId}
-  })
-    .then(cart =>
-      cart.update({
-        isPurchasd: true,
-        shippingAddress: req.body.shippingAddress,
-        deliveryAddress: req.body.deliveryAddress
-      })
-    )
-    .then(cart => res.json(cart))
-    .catch(next)
-})
+// router.post('/checkout', (req, res, next) => {
+//   Cart.findOne({
+//     where: {productId: req.body.productId, userId: req.body.userId}
+//   })
+//     .then(cart =>
+//       cart.update({
+//         isPurchasd: true,
+//         shippingAddress: req.body.shippingAddress,
+//         deliveryAddress: req.body.deliveryAddress
+//       })
+//     )
+//     .then(cart => res.json(cart))
+//     .catch(next)
+// })
 
 // CREATES a row in the cart BY PRODUCTID
 // finds user by req.body.userId, if the user doesn't exist, it creates one (with assigned role as 'guest' by default, as specified in user model )
 
-router.post('/:productId', async (req, res) => {
-  try {
-    await User.findOrCreate({
-      where: {
-        id: req.body.userId,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email
-      }
-    })
-    const newCart = Cart.create({
-      shippingAddress: req.body.shippingAddress,
-      billingAddress: req.body.billingAddress,
-      productId: req.params.productId,
-      userId: req.body.userId,
-      quantity: req.body.quantity,
-      status: req.body.status
-    })
-    res.json(newCart)
-  } catch (error) {
-    console.log(error)
-  }
-})
+// router.post('/:productId', async (req, res) => {
+//   try {
+//     await User.findOrCreate({
+//       where: {
+//         id: req.body.userId,
+//         firstName: req.body.firstName,
+//         lastName: req.body.lastName,
+//         email: req.body.email
+//       }
+//     })
+//     const newCart = Cart.create({
+//       shippingAddress: req.body.shippingAddress,
+//       billingAddress: req.body.billingAddress,
+//       productId: req.params.productId,
+//       userId: req.body.userId,
+//       quantity: req.body.quantity,
+//       status: req.body.status
+//     })
+//     res.json(newCart)
+//   } catch (error) {
+//     console.log(error)
+//   }
+// })
 // creates new row in the cart with all params that's specified on req.body
 // finds user by req.body.userId, if the user doesn't exist, it creates one (with assigned role as 'guest' by default, as specified in user model )
 
 router.post('/', async (req, res) => {
+  // console.log('req.body', req.body)
+  const prodId = req.body.product.id
+  const user = req.body.user.id
   try {
-    await User.findOrCreate({
-      where: {
-        id: req.body.userId,
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        email: req.body.email
-      }
-    })
-    const newCart = Cart.create(req.body)
+    const newCart = await Cart.create({productId: prodId, userId: user})
     res.json(newCart)
   } catch (error) {
     console.log(error)

@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {gotCart} from '../store/cart'
 
 class CartPage extends React.Component {
   componentDidMount() {
@@ -16,12 +17,12 @@ class CartPage extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return {}
+  return {cart: state.cart}
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    // gotCart: () => dispatch(gotCart())
+    gotCart: (userId, cart) => dispatch(gotCart(userId, cart))
   }
 }
 
