@@ -59,7 +59,7 @@ export const getCart = userId => async dispatch => {
 
 export const deleteProduct = productId => async dispatch => {
   try {
-    const res = await axios.delete(`/api/cart/${productId}`)
+    await axios.delete(`/api/cart/${productId}`)
     // console.log('axios data delete', res)
     return dispatch(deletedProduct(productId))
   } catch (err) {
@@ -104,7 +104,7 @@ export const updateProduct = productId => async dispatch => {
 export default function(state = initalState, action) {
   switch (action.type) {
     case GOT_CART:
-      return [...state, action.cart]
+      return state
     case DELETED_PRODUCT:
       return [
         ...state,
@@ -115,7 +115,7 @@ export default function(state = initalState, action) {
       //   ...state,
       //   action.product
       // ])
-      return [...state, action.product]
+      return [...state, action.state]
     case UPDATED_PRODUCT:
       return [...state, action.product]
     default:

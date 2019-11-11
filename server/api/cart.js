@@ -11,8 +11,9 @@ router.get('/:userId', async (req, res) => {
     res.send('no user defined!')
   } else {
     try {
-      const allProducts = await Cart.findAll({
-        where: {userId: user, isPurchasd: false}
+      const allProducts = await User.findAll({
+        include: {model: Product},
+        where: {id: user}
       })
       if (!allProducts) {
         res.status(404).send('No items in your cart!')
