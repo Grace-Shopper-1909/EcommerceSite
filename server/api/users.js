@@ -42,7 +42,7 @@ router.put('/:userId', async (req, res, next) => {
       },
       returning: true
     })
-    console.log('put route got user')
+    // console.log('put route got user')
     res.json(user[0])
   } catch (error) {
     next(error)

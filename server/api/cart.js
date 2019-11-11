@@ -5,14 +5,15 @@ router.use(express.json())
 
 // gets all producs in the cart for specified user:
 
-router.get('/', async (req, res) => {
+router.get('/:userId', async (req, res) => {
   const user = req.params.userId
   if (!user) {
     res.send('no user defined!')
   } else {
     try {
-      const allProducts = await Cart.findAll({
-        where: {userId: user, isPurchasd: false}
+      const allProducts = await User.findAll({
+        include: {model: Product},
+        where: {id: user}
       })
       if (!allProducts) {
         res.status(404).send('No items in your cart!')
@@ -71,12 +72,13 @@ router.get('/', async (req, res) => {
 // creates new row in the cart with all params that's specified on req.body
 // finds user by req.body.userId, if the user doesn't exist, it creates one (with assigned role as 'guest' by default, as specified in user model )
 
-router.post('/', async (req, res) => {
-  // console.log('req.body', req.body)
-  const prodId = req.body.product.id
-  const user = req.body.user.id
+router.post('/:userId', async (req, res) => {
+  console.log('req.body', req.body)
+  const productId = req.body.id
+  const userId = req.params.userId
   try {
-    const newCart = await Cart.create({productId: prodId, userId: user})
+    const newCart = await Cart.create({productId, userId})
+    console.log(newCart)
     res.json(newCart)
   } catch (error) {
     console.log(error)

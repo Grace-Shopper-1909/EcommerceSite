@@ -7,14 +7,11 @@ const Product = props => {
   // const result = props.addProduct(props.prod)
   // console.log('for product add button - the addProduct():', result)
   const product = props.prod
+  const userId = props.user.id
 
-  const user = props.user
+  // const userId = props.match.params.userId
 
-  const userProdObj = {
-    product,
-    user
-  }
-  console.log('userProdObj', userProdObj)
+  // console.log('userProdObj', userProdObj)
   return (
     <React.Fragment>
       <div className="product-title">
@@ -28,7 +25,7 @@ const Product = props => {
       <button
         className="add-to-cart"
         type="button"
-        onClick={() => props.addProduct(userProdObj)}
+        onClick={() => props.addProduct(product, userId)}
       >
         Add To Cart
       </button>

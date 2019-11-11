@@ -1,18 +1,22 @@
 import React from 'react'
 // import {Link} from 'react-router-dom'
-import Product from './product'
+import CartItem from './cart-item'
 
-const ProductGrid = props => {
-  // console.log('productGrid props.addProduct', props.addProduct)
+const CartGrid = props => {
+  const cart = props.cart
+  // const userObj = props.products[0]
+  // const products = userObj.products
+  // console.log('User OBJ', userObj)
+  // console.log('products', products)
   // console.log('me in product grid', props.me)
   return (
     <div className="grid">
-      {props.products.map(product => (
+      {cart.map(product => (
         <div key={product.id} className="single">
           {/* <Link to={`/products/${product.id}`}> */}
           {/* <Product {...product} /> */}
-          <Product
-            prod={product}
+          <CartItem
+            product={product}
             addProduct={props.addProduct}
             me={props.me}
             user={props.user}
@@ -24,4 +28,4 @@ const ProductGrid = props => {
   )
 }
 
-export default ProductGrid
+export default CartGrid

@@ -36,7 +36,7 @@ const setCurrentUser = user => ({type: SET_CURRENT_USER, user})
 export const me = () => async dispatch => {
   try {
     const res = await axios.get('/auth/me')
-    console.log('res.data in me thunk', res.data)
+    // console.log('res.data in me thunk', res.data)
     dispatch(getUser(res.data || defaultUser))
   } catch (err) {
     console.error(err)
@@ -75,7 +75,7 @@ export const logout = () => async dispatch => {
 export default function(state = defaultUser, action) {
   switch (action.type) {
     case GET_USER:
-      console.log('reducer action.user', action.user)
+      // console.log('reducer action.user', action.user)
       return action.user
     case REMOVE_USER:
       return defaultUser
