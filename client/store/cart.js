@@ -49,8 +49,8 @@ const updatedProduct = (productId, product) => ({
 export const getCart = userId => async dispatch => {
   try {
     const res = await axios.get(`/api/cart/${userId}`)
-    console.log('axios getCart data', res)
-    return dispatch(gotCart(res.data))
+    const data = res.data[0].products
+    return dispatch(gotCart(data))
   } catch (err) {
     console.error(err)
   }

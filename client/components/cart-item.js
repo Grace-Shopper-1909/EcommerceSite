@@ -1,15 +1,8 @@
 import React from 'react'
 
 const CartItem = props => {
-  // const {brand, name, price, imageUrl, addcartItem} = props
-  // console.log('props is this current product in map', props)
-  // console.log('Product props.prod.addproduct', props.addProduct)
-  // const result = props.addProduct(props.prod)
-  // console.log('for product add button - the addProduct():', result)
-  const product = props.prod
-
+  const product = props.product
   const user = props.user
-
   const userProdObj = {
     product,
     user

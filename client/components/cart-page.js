@@ -10,12 +10,12 @@ class CartPage extends React.Component {
 
   render() {
     const cart = this.props.cart
-    console.log('passing cart propts', this.props)
+    console.log('CARTPROPS', cart)
 
     return (
       <div>
         <h1>Cart Goes Here</h1>
-        <CartGrid products={cart} />
+        <CartGrid cart={cart} />
       </div>
     )
   }

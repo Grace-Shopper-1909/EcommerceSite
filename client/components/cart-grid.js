@@ -3,17 +3,20 @@ import React from 'react'
 import CartItem from './cart-item'
 
 const CartGrid = props => {
-  console.log('PROPS', props)
-  // console.log('CartGrid props.addProduct', props.addProduct)
+  const cart = props.cart
+  // const userObj = props.products[0]
+  // const products = userObj.products
+  // console.log('User OBJ', userObj)
+  // console.log('products', products)
   // console.log('me in product grid', props.me)
   return (
     <div className="grid">
-      {props.products.map(product => (
+      {cart.map(product => (
         <div key={product.id} className="single">
           {/* <Link to={`/products/${product.id}`}> */}
           {/* <Product {...product} /> */}
           <CartItem
-            prod={product}
+            product={product}
             addProduct={props.addProduct}
             me={props.me}
             user={props.user}
