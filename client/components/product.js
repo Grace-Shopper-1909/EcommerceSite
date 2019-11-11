@@ -14,7 +14,7 @@ const Product = props => {
     product,
     user
   }
-  console.log('userProdObj', userProdObj)
+  // console.log('userProdObj', userProdObj)
   return (
     <React.Fragment>
       <div className="product-title">

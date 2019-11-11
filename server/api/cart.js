@@ -5,7 +5,7 @@ router.use(express.json())
 
 // gets all producs in the cart for specified user:
 
-router.get('/', async (req, res) => {
+router.get('/:userId', async (req, res) => {
   const user = req.params.userId
   if (!user) {
     res.send('no user defined!')
