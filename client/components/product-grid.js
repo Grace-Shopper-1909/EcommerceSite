@@ -4,7 +4,7 @@ import Product from './product'
 
 const ProductGrid = props => {
   // console.log('productGrid props.addProduct', props.addProduct)
-  console.log('me in product grid', props.me)
+  // console.log('me in product grid', props.me)
   return (
     <div className="grid">
       {props.products.map(product => (

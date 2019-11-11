@@ -13,7 +13,7 @@ class AllProducts extends React.Component {
   }
   render() {
     const products = this.props.products
-    console.log('me in allprod', this.props.me)
+    // console.log('me in allprod', this.props.me)
     return (
       <div>
         <Title title="All Products" />
