@@ -48,7 +48,6 @@ const updatedProduct = (productId, product) => ({
  */
 export const getCart = userId => async dispatch => {
   try {
-    console.log('userId in thunk', userId)
     const res = await axios.get(`/api/cart/${userId}`)
     console.log('axios getCart data', res)
     return dispatch(gotCart(res.data))
@@ -77,10 +76,10 @@ export const deleteProduct = productId => async dispatch => {
 //   }
 // }
 
-export const addProduct = userProdObj => async dispatch => {
+export const addProduct = (product, userId) => async dispatch => {
   // console.log('product passed into thunk creator', userProdObj)
   try {
-    const res = await axios.post(`/api/cart`, userProdObj)
+    const res = await axios.post(`/api/cart/${userId}`, product)
     // console.log('axios data add', res)
     return dispatch(addedProduct(res.data))
   } catch (err) {
@@ -104,18 +103,14 @@ export const updateProduct = productId => async dispatch => {
 export default function(state = initalState, action) {
   switch (action.type) {
     case GOT_CART:
-      return state
+      return action.cart
     case DELETED_PRODUCT:
       return [
         ...state,
         ...state.filter(product => product.id !== action.productId)
       ]
     case ADDED_PRODUCT:
-      // console.log('reducer state after added product:', [
-      //   ...state,
-      //   action.product
-      // ])
-      return [...state, action.state]
+      return [...state, action.userProdObj]
     case UPDATED_PRODUCT:
       return [...state, action.product]
     default:

@@ -1,16 +1,19 @@
 import React from 'react'
 
-const Product = props => {
-  // const {brand, name, price, imageUrl, addProduct} = props
+const CartItem = props => {
+  // const {brand, name, price, imageUrl, addcartItem} = props
   // console.log('props is this current product in map', props)
   // console.log('Product props.prod.addproduct', props.addProduct)
   // const result = props.addProduct(props.prod)
   // console.log('for product add button - the addProduct():', result)
   const product = props.prod
-  const userId = props.user.id
 
-  // const userId = props.match.params.userId
+  const user = props.user
 
+  const userProdObj = {
+    product,
+    user
+  }
   // console.log('userProdObj', userProdObj)
   return (
     <React.Fragment>
@@ -25,7 +28,7 @@ const Product = props => {
       <button
         className="add-to-cart"
         type="button"
-        onClick={() => props.addProduct(product, userId)}
+        onClick={() => props.addProduct(userProdObj)}
       >
         Add To Cart
       </button>
@@ -33,4 +36,4 @@ const Product = props => {
   )
 }
 
-export default Product
+export default CartItem

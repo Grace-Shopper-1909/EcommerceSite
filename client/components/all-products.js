@@ -13,7 +13,6 @@ class AllProducts extends React.Component {
   }
   render() {
     const products = this.props.products
-    // console.log('me in allprod', this.props.me)
     return (
       <div>
         <Title title="All Products" />
@@ -43,7 +42,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     getProducts: () => dispatch(getProducts()),
-    addProduct: product => dispatch(addProduct(product)),
+    addProduct: (product, userId) => dispatch(addProduct(product, userId)),
     me: () => dispatch(me())
   }
 }

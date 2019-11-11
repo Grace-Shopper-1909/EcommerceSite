@@ -72,12 +72,13 @@ router.get('/:userId', async (req, res) => {
 // creates new row in the cart with all params that's specified on req.body
 // finds user by req.body.userId, if the user doesn't exist, it creates one (with assigned role as 'guest' by default, as specified in user model )
 
-router.post('/', async (req, res) => {
-  // console.log('req.body', req.body)
-  const prodId = req.body.product.id
-  const user = req.body.user.id
+router.post('/:userId', async (req, res) => {
+  console.log('req.body', req.body)
+  const productId = req.body.id
+  const userId = req.params.userId
   try {
-    const newCart = await Cart.create({productId: prodId, userId: user})
+    const newCart = await Cart.create({productId, userId})
+    console.log(newCart)
     res.json(newCart)
   } catch (error) {
     console.log(error)

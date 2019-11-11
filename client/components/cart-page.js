@@ -1,40 +1,21 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {getCart} from '../store/cart'
+import CartGrid from './cart-grid'
 
 class CartPage extends React.Component {
-  // constructor () {
-  //   super()
-  //   this.state = {
-  //     userId: ''
-  //   }
-  //   this.loadCart = this.loadCart.bind(this)
-  // }
-
   componentDidMount() {
-    // const userId = this.props.userId
-    console.log('userId in componentDidMount', this.props.user.id)
-    // NOTE: remove hard coding
-    this.props.getCart(1)
-    console.log('props cart in componentDidMount', this.props.cart)
-    // this.loadCart()
+    this.props.getCart(this.props.match.params.userId)
   }
 
-  // loadCart() {
-
-  //   this.setState ({
-  //     userId: 3
-  //   })
-  //   // await this.props.getCart(userId)
-  // }
-
   render() {
-    // const cart = this.props.cart
-    console.log('user in render', this.props.user.id)
-    console.log('props cart in render', this.props.cart)
+    const cart = this.props.cart
+    console.log('passing cart propts', this.props)
+
     return (
       <div>
         <h1>Cart Goes Here</h1>
+        <CartGrid products={cart} />
       </div>
     )
   }
@@ -52,5 +33,4 @@ const mapDispatchToProps = dispatch => {
     getCart: userId => dispatch(getCart(userId))
   }
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(CartPage)
