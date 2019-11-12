@@ -87,26 +87,25 @@ router.post('/:userId', async (req, res) => {
 
 // deletes product by id from the cart for specified user (which id is on the body of request):
 
-router.delete('/:userId', async (req, res, next) => {
+router.delete('/:userId/:productId', async (req, res, next) => {
   const userId = req.params.userId
+  const productId = req.params.productId
 
-  const num = Number(req.body.id)
-  console.log('USERID', userId)
-
-  console.log('num', num)
   try {
     const item = await Cart.findOne({
       where: {
-        productId: Number(req.body.id),
+        productId,
         userId
       }
     })
-    console.log('typeof num', typeof productId)
-    console.log('item', item)
+
     if (item) {
       await item.destroy()
+      res.status(204).end()
+    } else {
+      console.log('Item could not be updated')
+      res.status(404)
     }
-    console.log(item)
   } catch (err) {
     console.error(err)
     next(err)

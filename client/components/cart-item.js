@@ -4,8 +4,10 @@ import React from 'react'
 const CartItem = props => {
   const product = props.product
   const userId = props.user.id
+  const productId = product.id
 
-  console.log('PRODUCTID COMPONENT', product)
+  console.log('product Number', productId)
+  // console.log('product typeof', typeof product)
   console.log('userID', userId)
   // const user = props.user
   // const userProdObj = {
@@ -26,7 +28,7 @@ const CartItem = props => {
       <button
         className="add-to-cart"
         type="button"
-        onClick={() => props.deleteProduct(product, userId)}
+        onClick={() => props.deleteProduct(productId, userId)}
       >
         Delete
       </button>

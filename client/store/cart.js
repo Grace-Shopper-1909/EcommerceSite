@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {getProducts} from './products'
 
 /**
  * ACTION TYPES
@@ -21,10 +22,10 @@ const gotCart = cart => ({
   cart
 })
 
-const deletedProduct = productId => ({
-  type: DELETED_PRODUCT,
-  productId
-})
+// const deletedProduct = productId => ({
+//   type: DELETED_PRODUCT,
+//   productId
+// })
 
 const addedProduct = userProdObj => ({
   type: ADDED_PRODUCT,
@@ -50,13 +51,10 @@ export const getCart = userId => async dispatch => {
   }
 }
 
-export const deleteProduct = (product, userId) => async dispatch => {
-  console.log('AXIOS', product, userId)
-  console.log('AXIOS TYPE OF', typeof product)
+export const deleteProduct = (productId, userId) => async dispatch => {
   try {
-    await axios.delete(`/api/cart/${userId}`, product)
-    // console.log('axios data delete', res)
-    return dispatch(deletedProduct(product, userId))
+    await axios.delete(`/api/cart/${userId}/${productId}`)
+    dispatch(deleteProduct(productId, userId))
   } catch (err) {
     console.error(err)
   }
