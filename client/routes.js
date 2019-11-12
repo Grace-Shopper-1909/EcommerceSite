@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import {
   Login,
   Signup,
-  UserHome,
+  ConfirmationPage,
   AllProducts,
   CartPage,
   CheckoutPage,
@@ -37,6 +37,7 @@ class Routes extends Component {
           <Switch>
             {/* Routes placed here are only available after logging in */}
             <Route exact path="/" component={Homepage} />
+            <Route exact path="/confirm" component={ConfirmationPage} />
             {/* <Route path="/products" component={AllProducts} /> */}
           </Switch>
         )}

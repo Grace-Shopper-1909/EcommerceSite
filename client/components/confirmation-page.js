@@ -3,9 +3,8 @@ import {connect} from 'react-redux'
 import CartGridCheckout from './cart-grid-checkout'
 import {getCart} from '../store/cart'
 import {markPurchased} from '../store/checkout'
-import {Link} from 'react-router-dom'
 
-class CheckoutPage extends React.Component {
+class ConfirmationPage extends React.Component {
   componentDidMount() {
     // console.log(this.props)
     this.props.getCart(this.props.match.params.userId)
@@ -23,20 +22,9 @@ class CheckoutPage extends React.Component {
 
     return (
       <div>
-        <h1>Checkout Page</h1>
-
+        <h1>Order Confirmation</h1>
+        <h2>Success your order has been placed!</h2>
         <CartGridCheckout cart={cart} user={this.props.user} />
-        <div className="center">
-          <Link to="/confirm">
-            <button
-              className="checkout-btn"
-              type="button"
-              onClick={() => this.props.markPurchased(userId)}
-            >
-              Complete Purchase
-            </button>
-          </Link>
-        </div>
       </div>
     )
   }
@@ -56,4 +44,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CheckoutPage)
+export default connect(mapStateToProps, mapDispatchToProps)(ConfirmationPage)
