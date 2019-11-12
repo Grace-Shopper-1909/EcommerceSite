@@ -5,7 +5,7 @@ const CartItem = props => {
   const product = props.product
   const userId = props.user.id
 
-  // console.log('PRODUCTID COMPONENT', productId)
+  console.log('PRODUCTID COMPONENT', product)
   console.log('userID', userId)
   // const user = props.user
   // const userProdObj = {

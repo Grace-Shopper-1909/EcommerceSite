@@ -50,13 +50,13 @@ export const getCart = userId => async dispatch => {
   }
 }
 
-export const deleteProduct = (productId, userId) => async dispatch => {
-  console.log('AXIOS', productId, userId)
-
+export const deleteProduct = (product, userId) => async dispatch => {
+  console.log('AXIOS', product, userId)
+  console.log('AXIOS TYPE OF', typeof product)
   try {
-    await axios.delete(`/api/cart/${userId}`, productId)
+    await axios.delete(`/api/cart/${userId}`, product)
     // console.log('axios data delete', res)
-    return dispatch(deletedProduct(productId, userId))
+    return dispatch(deletedProduct(product, userId))
   } catch (err) {
     console.error(err)
   }

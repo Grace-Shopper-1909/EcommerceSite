@@ -89,18 +89,20 @@ router.post('/:userId', async (req, res) => {
 
 router.delete('/:userId', async (req, res, next) => {
   const userId = req.params.userId
-  const strId = req.body.productId
-  const num = Number(req.body.productId)
+
+  const num = Number(req.body.id)
   console.log('USERID', userId)
 
   console.log('num', num)
   try {
     const item = await Cart.findOne({
       where: {
-        productId: num,
+        productId: Number(req.body.id),
         userId
       }
     })
+    console.log('typeof num', typeof productId)
+    console.log('item', item)
     if (item) {
       await item.destroy()
     }
@@ -110,6 +112,31 @@ router.delete('/:userId', async (req, res, next) => {
     next(err)
   }
 })
+
+//works on backend but not frontent
+// router.delete('/:userId', async (req, res, next) => {
+//   const userId = req.params.userId
+//   const strId = req.body.productId
+//   const num = Number(req.body.productId)
+//   console.log('USERID', userId)
+
+//   console.log('num', num)
+//   try {
+//     const item = await Cart.findOne({
+//       where: {
+//         productId: Number(req.body.productId),
+//         userId
+//       }
+//     })
+//     if (item) {
+//       await item.destroy()
+//     }
+//     console.log(item)
+//   } catch (err) {
+//     console.error(err)
+//     next(err)
+//   }
+// })
 
 // updates the cart, by productId (to change the quantity of item)
 
