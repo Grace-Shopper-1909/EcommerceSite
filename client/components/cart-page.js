@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {getCart} from '../store/cart'
+import {getCart, deleteProduct} from '../store/cart'
 import CartGrid from './cart-grid'
 
 class CartPage extends React.Component {
@@ -10,12 +10,15 @@ class CartPage extends React.Component {
 
   render() {
     const cart = this.props.cart
-    console.log('CARTPROPS', cart)
 
     return (
       <div>
         <h1>Cart Goes Here</h1>
-        <CartGrid cart={cart} />
+        <CartGrid
+          cart={cart}
+          deleteProduct={this.props.deleteProduct}
+          user={this.props.user}
+        />
       </div>
     )
   }
@@ -30,7 +33,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getCart: userId => dispatch(getCart(userId))
+    getCart: userId => dispatch(getCart(userId)),
+    deleteProduct: (productId, userId) =>
+      dispatch(deleteProduct(productId, userId))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CartPage)
