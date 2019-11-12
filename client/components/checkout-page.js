@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import CartGrid from './cart-grid'
+import CartGridCheckout from './cart-grid-checkout'
 import {getCart} from '../store/cart'
 
 class CheckoutPage extends React.Component {
@@ -14,7 +14,8 @@ class CheckoutPage extends React.Component {
       <div>
         <h1>Checkout Page</h1>
 
-        <CartGrid cart={cart} user={this.props.user} />
+        <CartGridCheckout cart={cart} user={this.props.user} />
+        <button className="add-to-cart">Complete Purchase</button>
       </div>
     )
   }
