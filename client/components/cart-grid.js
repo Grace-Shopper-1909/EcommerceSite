@@ -4,6 +4,7 @@ import CartItem from './cart-item'
 
 const CartGrid = props => {
   const cart = props.cart
+  console.log('PROPSSS', props)
   // const userObj = props.products[0]
   // const products = userObj.products
   // console.log('User OBJ', userObj)
@@ -17,7 +18,7 @@ const CartGrid = props => {
           {/* <Product {...product} /> */}
           <CartItem
             product={product}
-            addProduct={props.addProduct}
+            deleteProduct={props.deleteProduct}
             me={props.me}
             user={props.user}
           />

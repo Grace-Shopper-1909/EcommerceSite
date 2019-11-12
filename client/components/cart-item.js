@@ -1,12 +1,19 @@
 import React from 'react'
+// import user from '../store/user'
 
 const CartItem = props => {
   const product = props.product
-  const user = props.user
-  const userProdObj = {
-    product,
-    user
-  }
+  const userId = props.user.id
+  const productId = product.id
+
+  console.log('product Number', productId)
+  // console.log('product typeof', typeof product)
+  console.log('userID', userId)
+  // const user = props.user
+  // const userProdObj = {
+  //   product,
+  //   user
+  // }
   // console.log('userProdObj', userProdObj)
   return (
     <React.Fragment>
@@ -21,9 +28,9 @@ const CartItem = props => {
       <button
         className="add-to-cart"
         type="button"
-        onClick={() => props.addProduct(userProdObj)}
+        onClick={() => props.deleteProduct(productId, userId)}
       >
-        Add To Cart
+        Delete
       </button>
     </React.Fragment>
   )

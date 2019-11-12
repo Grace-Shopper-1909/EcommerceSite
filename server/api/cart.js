@@ -87,21 +87,55 @@ router.post('/:userId', async (req, res) => {
 
 // deletes product by id from the cart for specified user (which id is on the body of request):
 
-router.delete('/:id', (req, res, next) => {
-  const userId = req.body.userId
-  if (!userId) {
-    res.send('no user defined!')
-  } else {
-    Cart.destroy({
+router.delete('/:userId/:productId', async (req, res, next) => {
+  const userId = req.params.userId
+  const productId = req.params.productId
+
+  try {
+    const item = await Cart.findOne({
       where: {
-        productId: req.params.id,
+        productId,
         userId
       }
     })
-      .then(() => res.status(204).end())
-      .catch(next)
+
+    if (item) {
+      await item.destroy()
+      res.status(204).end()
+    } else {
+      console.log('Item could not be updated')
+      res.status(404)
+    }
+  } catch (err) {
+    console.error(err)
+    next(err)
   }
 })
+
+//works on backend but not frontent
+// router.delete('/:userId', async (req, res, next) => {
+//   const userId = req.params.userId
+//   const strId = req.body.productId
+//   const num = Number(req.body.productId)
+//   console.log('USERID', userId)
+
+//   console.log('num', num)
+//   try {
+//     const item = await Cart.findOne({
+//       where: {
+//         productId: Number(req.body.productId),
+//         userId
+//       }
+//     })
+//     if (item) {
+//       await item.destroy()
+//     }
+//     console.log(item)
+//   } catch (err) {
+//     console.error(err)
+//     next(err)
+//   }
+// })
 
 // updates the cart, by productId (to change the quantity of item)
 

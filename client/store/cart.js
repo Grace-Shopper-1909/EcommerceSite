@@ -1,4 +1,5 @@
 import axios from 'axios'
+import {getProducts} from './products'
 
 /**
  * ACTION TYPES
@@ -21,15 +22,9 @@ const gotCart = cart => ({
   cart
 })
 
-const deletedProduct = productId => ({
-  type: DELETED_PRODUCT,
-  productId
-})
-
-// const addedProduct = (product, productId) => ({
-//   type: ADDED_PRODUCT,
-//   productId,
-//   product
+// const deletedProduct = productId => ({
+//   type: DELETED_PRODUCT,
+//   productId
 // })
 
 const addedProduct = userProdObj => ({
@@ -56,25 +51,14 @@ export const getCart = userId => async dispatch => {
   }
 }
 
-export const deleteProduct = productId => async dispatch => {
+export const deleteProduct = (productId, userId) => async dispatch => {
   try {
-    await axios.delete(`/api/cart/${productId}`)
-    // console.log('axios data delete', res)
-    return dispatch(deletedProduct(productId))
+    await axios.delete(`/api/cart/${userId}/${productId}`)
+    dispatch(deleteProduct(productId, userId))
   } catch (err) {
     console.error(err)
   }
 }
-
-// export const addProduct = (product, productId) => async dispatch => {
-//   try {
-//     const res = await axios.post(`/api/cart/${productId}`, product)
-//     console.log('axios data add', res)
-//     return dispatch(addedProduct(res.data, productId))
-//   } catch (err) {
-//     console.error(err)
-//   }
-// }
 
 export const addProduct = (product, userId) => async dispatch => {
   // console.log('product passed into thunk creator', userProdObj)
@@ -104,11 +88,13 @@ export default function(state = initalState, action) {
   switch (action.type) {
     case GOT_CART:
       return action.cart
-    case DELETED_PRODUCT:
-      return [
-        ...state,
-        ...state.filter(product => product.id !== action.productId)
-      ]
+    case DELETED_PRODUCT: {
+      const updatedProducts = state.filter(
+        product => product.id !== action.productId
+      )
+      console.log(updatedProducts)
+      return [...state, updatedProducts]
+    }
     case ADDED_PRODUCT:
       return [...state, action.userProdObj]
     case UPDATED_PRODUCT:
