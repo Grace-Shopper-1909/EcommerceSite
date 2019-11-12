@@ -13,7 +13,7 @@ class CartPage extends React.Component {
 
     return (
       <div>
-        <h1>Cart Goes Here</h1>
+        <h1>Cart</h1>
         <CartGrid
           cart={cart}
           deleteProduct={this.props.deleteProduct}

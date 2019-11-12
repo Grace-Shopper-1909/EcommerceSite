@@ -92,6 +92,13 @@ form div {
   flex-direction: column;
 }
 
+.order-item {
+  margin: 1.5%;
+  padding: 1.5%;
+  border: 1px solid #d8d8d8;
+  flex-direction: column;
+}
+
 .product-title {
   text-align: left;
   color: black;
@@ -103,6 +110,9 @@ form div {
   max-width: 15vw;
   max-height: 15vh;
   padding: 5%;
+  align-self: center;
+}
+.cart-image {
   align-self: center;
 }
 
@@ -134,8 +144,12 @@ form div {
   font-size: 1.4vw;
   text-decoration: none;
   color: black;
+  display: flex;
+  align-items: center;
 }
-
+#login {
+  padding-right: 10px;
+}
 #black {
   background-color: black;
   color: white;

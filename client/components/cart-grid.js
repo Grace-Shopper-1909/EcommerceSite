@@ -6,9 +6,9 @@ const CartGrid = props => {
   const cart = props.cart
 
   return (
-    <div className="grid">
+    <div>
       {cart.map(product => (
-        <div key={product.id} className="single">
+        <div key={product.id}>
           {/* <Link to={`/products/${product.id}`}> */}
           {/* <Product {...product} /> */}
           <CartItem

@@ -7,6 +7,8 @@ const CartItem = props => {
 
   return (
     <React.Fragment>
+      <img src={product.imageUrl} className="cart-image" />
+
       <div className="product-title">
         <h3>{product.brand}</h3>
 
@@ -14,7 +16,7 @@ const CartItem = props => {
 
         <h3>${product.price / 100}</h3>
       </div>
-      <img src={product.imageUrl} className="product-image" />
+
       <button
         className="add-to-cart"
         type="button"
