@@ -1,6 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
-
+// note: fix the validations for shipping and billing
+// create a hook so is purchased cannot be true without shipping and billing addresses
 const Cart = db.define('cart', {
   date: {
     type: Sequelize.DATE,
@@ -22,18 +23,18 @@ const Cart = db.define('cart', {
     defaultValue: 0
   },
   shippingAddress: {
-    type: Sequelize.TEXT,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.TEXT
+    // allowNull: false,
+    // validate: {
+    //   notEmpty: true
+    // }
   },
   billingAddress: {
-    type: Sequelize.TEXT,
-    allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    type: Sequelize.TEXT
+    // allowNull: false,
+    // validate: {
+    //   notEmpty: true
+    // }
   },
   dateShipped: {
     type: Sequelize.DATE,
