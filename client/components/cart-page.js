@@ -2,6 +2,7 @@ import React from 'react'
 import {connect} from 'react-redux'
 import {getCart, deleteProduct} from '../store/cart'
 import CartGrid from './cart-grid'
+import {Link} from 'react-router-dom'
 
 class CartPage extends React.Component {
   componentDidMount() {
@@ -10,6 +11,8 @@ class CartPage extends React.Component {
 
   render() {
     const cart = this.props.cart
+    const userId = this.props.user.id
+    console.log('USERID', userId)
 
     return (
       <div>
@@ -19,6 +22,13 @@ class CartPage extends React.Component {
           deleteProduct={this.props.deleteProduct}
           user={this.props.user}
         />
+        <div className="center">
+          <Link to={`/checkout/${userId}`}>
+            <button type="button" className="checkout-btn">
+              Checkout
+            </button>
+          </Link>
+        </div>
       </div>
     )
   }

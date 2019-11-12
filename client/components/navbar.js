@@ -9,7 +9,6 @@ const Navbar = props => {
   const {handleClick, isLoggedIn, user} = props
   const email = user.email
   const userId = user.id
-  console.log(email)
   return (
     <div className="column">
       <div className="nav space-between">

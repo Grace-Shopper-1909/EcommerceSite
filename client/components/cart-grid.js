@@ -8,7 +8,7 @@ const CartGrid = props => {
   return (
     <div>
       {cart.map(product => (
-        <div key={product.id}>
+        <div key={product.id} className="item-row">
           {/* <Link to={`/products/${product.id}`}> */}
           {/* <Product {...product} /> */}
           <CartItem
@@ -16,6 +16,7 @@ const CartGrid = props => {
             deleteProduct={props.deleteProduct}
             me={props.me}
             user={props.user}
+            className="row"
           />
           {/* </Link> */}
         </div>
