@@ -17,7 +17,7 @@ class AllProducts extends React.Component {
       <div>
         <Title title="All Products" />
 
-        <div className="row">
+        <div>
           <ProductGrid
             products={products}
             user={this.props.user}
