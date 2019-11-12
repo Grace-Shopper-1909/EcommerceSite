@@ -45,7 +45,10 @@ export const getCart = userId => async dispatch => {
   try {
     const res = await axios.get(`/api/cart/${userId}`)
     const data = res.data[0].products
-    return dispatch(gotCart(data))
+    const notPurchasd = data.filter(
+      product => product.cart.isPurchasd === false
+    )
+    return dispatch(gotCart(notPurchasd))
   } catch (err) {
     console.error(err)
   }
