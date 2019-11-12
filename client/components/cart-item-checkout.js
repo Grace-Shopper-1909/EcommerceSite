@@ -2,8 +2,7 @@ import React from 'react'
 
 const CartItemCheckout = props => {
   const product = props.product
-  const userId = props.user.id
-  const productId = product.id
+  // const userId = props.user.id
 
   return (
     <React.Fragment>

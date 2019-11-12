@@ -22,10 +22,10 @@ const gotCart = cart => ({
   cart
 })
 
-// const deletedProduct = productId => ({
-//   type: DELETED_PRODUCT,
-//   productId
-// })
+const deletedProduct = productId => ({
+  type: DELETED_PRODUCT,
+  productId
+})
 
 const addedProduct = userProdObj => ({
   type: ADDED_PRODUCT,
