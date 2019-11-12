@@ -7,23 +7,26 @@ const CartItem = props => {
 
   return (
     <React.Fragment>
-      <img src={product.imageUrl} className="cart-image" />
-
-      <div className="product-title">
-        <h3>{product.brand}</h3>
-
-        <h3 id="bold">{name}</h3>
-
-        <h3>${product.price / 100}</h3>
+      <div className="column" id="width">
+        <img src={product.imageUrl} className="cart-image" />
       </div>
+      <div className="column flex-start">
+        <div className="product-title item-cart">
+          <h3>{product.brand}</h3>
 
-      <button
-        className="add-to-cart"
-        type="button"
-        onClick={() => props.deleteProduct(productId, userId)}
-      >
-        Delete
-      </button>
+          <h3 id="bold">{product.name}</h3>
+
+          <h3>${product.price / 100}</h3>
+        </div>
+
+        <button
+          className="delete-btn"
+          type="button"
+          onClick={() => props.deleteProduct(productId, userId)}
+        >
+          Delete
+        </button>
+      </div>
     </React.Fragment>
   )
 }

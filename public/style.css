@@ -53,6 +53,8 @@ form div {
 }
 .flex-start {
   justify-content: flex-start;
+  align-items: flex-start;
+  padding-left: 50px;
 }
 .space-between {
   justify-content: space-between;
@@ -92,6 +94,11 @@ form div {
   flex-direction: column;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+}
+
 .order-item {
   margin: 1.5%;
   padding: 1.5%;
@@ -114,6 +121,8 @@ form div {
 }
 .cart-image {
   align-self: center;
+  max-height: 200px;
+  justify-self: center;
 }
 
 .add-to-cart {
@@ -128,6 +137,47 @@ form div {
   color: white;
   justify-self: center;
   margin: 1%;
+}
+
+.delete-btn {
+  text-align: center;
+  border-radius: 10px;
+  background-color: black;
+  width: 7vw;
+  height: 4vh;
+  font-size: 1vw;
+  border: 1px solid white;
+  color: white;
+  margin: 1%;
+}
+
+.checkout-btn {
+  text-align: center;
+  border-radius: 10px;
+  background-color: black;
+  width: 15vw;
+  height: 6vh;
+  font-size: 2vw;
+  border: 1px solid white;
+  color: white;
+  margin: 1%;
+}
+
+.item-row {
+  display: flex;
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 2%;
+  padding: 1.5%;
+  border: 1px solid #d8d8d8;
+
+  align-items: center;
+}
+.item-cart {
+  text-align: left;
+  color: black;
+  margin: 10px;
+  font-size: 1.5vw;
 }
 
 #cart-icon {
@@ -181,4 +231,11 @@ form div {
 
 #hero {
   width: 100%;
+}
+#flex {
+  display: flex;
+}
+
+#width {
+  width: 200px;
 }

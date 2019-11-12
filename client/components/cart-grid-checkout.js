@@ -6,12 +6,17 @@ const CartGridCheckout = props => {
   const cart = props.cart
 
   return (
-    <div className="grid">
+    <div>
       {cart.map(product => (
-        <div key={product.id} className="single">
+        <div key={product.id} className="item-row">
           {/* <Link to={`/products/${product.id}`}> */}
           {/* <Product {...product} /> */}
-          <CartItemCheckout product={product} me={props.me} user={props.user} />
+          <CartItemCheckout
+            product={product}
+            me={props.me}
+            user={props.user}
+            className="row"
+          />
           {/* </Link> */}
         </div>
       ))}
