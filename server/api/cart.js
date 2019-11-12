@@ -26,22 +26,23 @@ router.get('/:userId', async (req, res) => {
   }
 })
 
-// changes status of isPurchased to true, updates shipping and billing address:
-
-// router.post('/checkout', (req, res, next) => {
-//   Cart.findOne({
-//     where: {productId: req.body.productId, userId: req.body.userId}
-//   })
-//     .then(cart =>
-//       cart.update({
-//         isPurchasd: true,
-//         shippingAddress: req.body.shippingAddress,
-//         deliveryAddress: req.body.deliveryAddress
-//       })
-//     )
-//     .then(cart => res.json(cart))
-//     .catch(next)
-// })
+router.put('/:userId', async (req, res, next) => {
+  try {
+    const updatedCart = await Cart.update(
+      {
+        isPurchasd: true
+      },
+      {
+        where: {userId: req.params.userId},
+        returning: true,
+        plain: true
+      }
+    )
+    res.send(updatedCart)
+  } catch (error) {
+    next(error)
+  }
+})
 
 router.post('/:userId', async (req, res) => {
   console.log('req.body', req.body)
@@ -81,23 +82,42 @@ router.delete('/:userId/:productId', async (req, res, next) => {
   }
 })
 
-router.put('/:productId', (req, res, next) => {
-  Cart.findOne({
-    where: {productId: req.params.productId, userId: req.body.userId}
-  })
-    .then(cart => cart.update(req.body))
-    .then(cart => res.json(cart))
-    .catch(next)
-})
+// router.put('/:productId', (req, res, next) => {
+//   Cart.findOne({
+//     where: {productId: req.params.productId, userId: req.body.userId}
+//   })
+//     .then(cart => cart.update(req.body))
+//     .then(cart => res.json(cart))
+//     .catch(next)
+// })
+
+// changes status of isPurchased to true
+// router.put('checkout/:userId', async (req, res, next) => {
+//   try {
+//     const cart = await Cart.findAll({
+//       where: {
+//         userId: req.params.userId
+//       }
+//     })
+//     const [numUpdatedRows, updatedRows] = await cart.update(req.body)
+//     if(!numUpdatedRows) {
+//       res.status(404).json('Order Not Found')
+//     }
+//     console.log('UPDATED ROWS', updatedRows[0])
+//     res.send(updatedRows[0])
+//   } catch (error) {
+//     next(error)
+//   }
+// })
 
 // updates the cart (to change the quantity of item)
-router.put('/', (req, res, next) => {
-  Cart.findOne({
-    where: {productId: req.body.productId, userId: req.body.userId}
-  })
-    .then(cart => cart.update(req.body))
-    .then(cart => res.json(cart))
-    .catch(next)
-})
+// router.put('/', (req, res, next) => {
+//   Cart.findOne({
+//     where: {productId: req.body.productId, userId: req.body.userId}
+//   })
+//     .then(cart => cart.update(req.body))
+//     .then(cart => res.json(cart))
+//     .catch(next)
+// })
 
 module.exports = router
