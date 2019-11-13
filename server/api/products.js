@@ -12,13 +12,15 @@ router.get('/', async (req, res, next) => {
 })
 
 // gets all products for a specific brand
-router.get('/shopByBrand', async (req, res, next) => {
+router.get('/:brand', async (req, res, next) => {
   try {
     const products = await Product.findAll({
       where: {
-        brand: req.body.brand
+        brand: req.params.brand
       }
     })
+    console.log('REQ.PARAMS.BRAND IN ROUTE', req.params.brand)
+    console.log('PRODUCTS IN ROUTE', products)
     res.send(products)
   } catch (error) {
     console.error(error)

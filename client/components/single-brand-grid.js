@@ -1,6 +1,6 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
-import Product from './all-brands-item'
+// import {Link} from 'react-router-dom'
+import Product from './single-brand-item'
 
 const ProductGrid = props => {
   // console.log('productGrid props.addProduct', props.addProduct)
