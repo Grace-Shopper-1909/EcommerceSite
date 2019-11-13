@@ -10,6 +10,8 @@ class AllProducts extends React.Component {
   componentDidMount() {
     console.log('component did mount')
     console.log('MATCH PARAMS brand', this.props.match.params.brand)
+    console.log('MATCH PARAMS brand type', typeof this.props.match.params.brand)
+
     this.props.getProductsByBrand(this.props.match.params.brand)
     this.props.me()
   }
@@ -44,7 +46,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    getProductsByBrand: () => dispatch(getProductsByBrand()),
+    getProductsByBrand: brand => dispatch(getProductsByBrand(brand)),
     me: () => dispatch(me())
   }
 }
