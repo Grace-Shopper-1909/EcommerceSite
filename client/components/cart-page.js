@@ -5,11 +5,22 @@ import CartGrid from './cart-grid'
 import {Link} from 'react-router-dom'
 
 class CartPage extends React.Component {
-  componentDidMount() {
-    this.props.getCart(this.props.match.params.userId)
+  constructor(props) {
+    super(props)
+    this.state = {
+      loaded: false
+    }
+  }
+
+  async componentDidMount() {
+    await this.props.getCart(this.props.match.params.userId)
+    this.setState({loaded: true})
   }
 
   render() {
+    if (!this.state.loaded) {
+      return <div>{null}</div>
+    }
     const cart = this.props.cart
     const userId = this.props.user.id
 
