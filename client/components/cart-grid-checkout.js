@@ -12,6 +12,7 @@ const CartGridCheckout = props => {
           {/* <Link to={`/products/${product.id}`}> */}
           {/* <Product {...product} /> */}
           <CartItemCheckout
+            cart={cart}
             product={product}
             me={props.me}
             user={props.user}
