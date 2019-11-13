@@ -8,17 +8,12 @@ import Title from './title'
 
 class AllProducts extends React.Component {
   componentDidMount() {
-    console.log('component did mount')
-    console.log('MATCH PARAMS brand', this.props.match.params.brand)
-    console.log('MATCH PARAMS brand type', typeof this.props.match.params.brand)
-
     this.props.getProductsByBrand(this.props.match.params.brand)
     this.props.me()
   }
   render() {
-    console.log('component rendered')
     const products = this.props.products
-    console.log('PRODUCTS first', products)
+
     return (
       <div>
         <Title title={this.props.match.params.brand} />

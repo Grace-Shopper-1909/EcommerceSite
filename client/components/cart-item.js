@@ -16,7 +16,7 @@ class CartItem extends React.Component {
   }
   loadQty() {
     const qtyStart = this.props.product.cart.quantity
-    console.log('qtyStart', qtyStart)
+
     this.setState({
       quantity: qtyStart
     })

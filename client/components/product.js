@@ -41,8 +41,6 @@ class Product extends React.Component {
     // const productId = product.id
     const userId = this.props.user.id
     // const qtyStart = product.cart.quantity || 1
-    console.log('props ', this.props)
-    console.log('userId ', userId)
 
     return (
       <React.Fragment>

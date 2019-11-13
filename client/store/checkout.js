@@ -21,10 +21,6 @@ const initalState = []
 /**
  * ACTION CREATORS
  */
-// const markedPurchased = order => ({
-//   type: constants.MARKED_PURCHASED,
-//   order
-// })
 
 const markedPurchased = cart => ({
   type: constants.MARKED_PURCHASED,
@@ -56,9 +52,8 @@ export const updateOrder = productId => async dispatch => {
 }
 
 export const markPurchased = userId => async dispatch => {
-  // console.log('userId in thunk', userId)
   const res = await axios.put(`/api/cart/${userId}`)
-  // console.log('Axios request response data', res.data)
+
   dispatch(markedPurchased(res.data))
 }
 
@@ -69,22 +64,7 @@ export default function(state = initalState, action) {
   switch (action.type) {
     case constants.MARKED_PURCHASED:
       return [...state, action.cart]
-    // case constants.GOT_PRODUCTS:
-    //   return {...state, products: action.products}
-    // case constants.CREATED_ORDER:
-    //   const newCart = {
-    //     firstName: action.val.firstName,
-    //     lastName: action.val.lastName,
-    //     email: action.val.email,
-    //     quantity: action.val.quantity,
-    //     shippingAddress: action.val.shippingAddress,
-    //     billingAddress: action.val.billingAddress,
-    //     productId: action.val.productId,
-    //     userId: action.valuserId
-    //   }
-    //   return {...state, cart: {...state.cart, newCart}}
-    // case constants.UPDATED_ORDER:
-    //   return {...state, cart: action.val}
+
     default:
       return state
   }
