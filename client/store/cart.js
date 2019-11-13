@@ -76,7 +76,7 @@ export const addProduct = (product, userId) => async dispatch => {
   // console.log('product passed into thunk creator', userProdObj)
   try {
     const res = await axios.post(`/api/cart/${userId}`, product)
-    // console.log('axios data add', res)
+    console.log('axios data ADD PRODUCT', res.data)
     return dispatch(addedProduct(res.data))
   } catch (err) {
     console.error(err)
