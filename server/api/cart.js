@@ -26,40 +26,6 @@ router.get('/:userId', async (req, res) => {
   }
 })
 
-// router.put('/add/:userId/:productId', (req, res, next) => {
-//   const userId = req.params.userId
-//   const productId = req.params.productId
-//   Cart.findOne({
-//     where: {
-//       productId,
-//       userId
-//     }
-//   })
-//     .then(cart => {
-//       const newQuantity = cart.quantity + 1
-//       cart.update({quantity: newQuantity})
-//     })
-//     .then(item => res.json(item))
-//     .catch(next)
-// })
-
-// router.put('/reduce/:userId/:productId', (req, res, next) => {
-//   const userId = req.params.userId
-//   const productId = req.params.productId
-//   Cart.findOne({
-//     where: {
-//       productId,
-//       userId
-//     }
-//   })
-//     .then(cart => {
-//       const newQuantity = cart.quantity - 1
-//       cart.update({quantity: newQuantity})
-//     })
-//     .then(item => res.json(item))
-//     .catch(next)
-// })
-
 //updates the quantity:
 
 router.put('/update/:userId/:productId', (req, res, next) => {
@@ -73,8 +39,6 @@ router.put('/update/:userId/:productId', (req, res, next) => {
   })
     .then(cart => {
       const newQuantity = req.body.quantity
-      console.log('req.body', req.body)
-      console.log('newQty backend', newQuantity)
       cart.update({quantity: newQuantity})
     })
     .then(item => res.json(item))
@@ -100,12 +64,11 @@ router.put('/:userId', async (req, res, next) => {
 })
 
 router.post('/:userId', async (req, res) => {
-  // console.log('req.body', req.body)
   const productId = req.body.id
   const userId = req.params.userId
   try {
     const newCart = await Cart.create({productId, userId})
-    // console.log(newCart)
+
     res.json(newCart)
   } catch (error) {
     console.log(error)
@@ -137,43 +100,5 @@ router.delete('/:userId/:productId', async (req, res, next) => {
     next(err)
   }
 })
-
-// router.put('/:productId', (req, res, next) => {
-//   Cart.findOne({
-//     where: {productId: req.params.productId, userId: req.body.userId}
-//   })
-//     .then(cart => cart.update(req.body))
-//     .then(cart => res.json(cart))
-//     .catch(next)
-// })
-
-// changes status of isPurchased to true
-// router.put('checkout/:userId', async (req, res, next) => {
-//   try {
-//     const cart = await Cart.findAll({
-//       where: {
-//         userId: req.params.userId
-//       }
-//     })
-//     const [numUpdatedRows, updatedRows] = await cart.update(req.body)
-//     if(!numUpdatedRows) {
-//       res.status(404).json('Order Not Found')
-//     }
-//     console.log('UPDATED ROWS', updatedRows[0])
-//     res.send(updatedRows[0])
-//   } catch (error) {
-//     next(error)
-//   }
-// })
-
-// updates the cart (to change the quantity of item)
-// router.put('/', (req, res, next) => {
-//   Cart.findOne({
-//     where: {productId: req.body.productId, userId: req.body.userId}
-//   })
-//     .then(cart => cart.update(req.body))
-//     .then(cart => res.json(cart))
-//     .catch(next)
-// })
 
 module.exports = router

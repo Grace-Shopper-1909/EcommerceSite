@@ -8,14 +8,12 @@ import Title from './title'
 
 class AllProducts extends React.Component {
   componentDidMount() {
-    console.log('component did mount')
     this.props.getProducts()
     this.props.me()
   }
   render() {
-    console.log('component rendered')
     const products = this.props.products
-    console.log('PRODUCTS first', products)
+
     return (
       <div>
         <Title title="Shop By Brand" />

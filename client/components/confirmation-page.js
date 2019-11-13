@@ -6,19 +6,12 @@ import {markPurchased} from '../store/checkout'
 
 class ConfirmationPage extends React.Component {
   componentDidMount() {
-    // console.log(this.props)
     this.props.getCart(this.props.match.params.userId)
   }
 
   render() {
     const cart = this.props.cart
     const userId = this.props.user.id
-
-    // console.log('USERID ON PROPS', this.props.user.id)
-    // console.log('USER', this.props.user)
-    // console.log('markedPurchased in render', this.props.markPurchased)
-    // console.log('THIS.props', this.props)
-    // console.log('ON CLICK', this.props.markPurchased(userId))
 
     return (
       <div>

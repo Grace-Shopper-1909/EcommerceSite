@@ -3,9 +3,6 @@ import React from 'react'
 import Product from './single-brand-item'
 
 const ProductGrid = props => {
-  // console.log('productGrid props.addProduct', props.addProduct)
-  // console.log('me in product grid', props.me)
-  // console.log('props.product in brands grid', props.products)
   return (
     <div className="grid">
       {props.products.map(product => (
