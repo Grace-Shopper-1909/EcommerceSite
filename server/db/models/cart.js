@@ -20,7 +20,7 @@ const Cart = db.define('cart', {
   },
   quantity: {
     type: Sequelize.INTEGER,
-    defaultValue: 0
+    defaultValue: 1
   },
   shippingAddress: {
     type: Sequelize.TEXT
@@ -45,5 +45,9 @@ const Cart = db.define('cart', {
     defaultValue: null
   }
 })
+
+Cart.prototype.handleAddition = cart => {
+  console.log('got to handle addition on model, this cart  quantity is:', this)
+}
 
 module.exports = Cart
