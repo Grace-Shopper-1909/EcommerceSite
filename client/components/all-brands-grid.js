@@ -1,23 +1,26 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+// import {Link} from 'react-router-dom'
 import Product from './all-brands-item'
 
 const ProductGrid = props => {
-  // console.log('productGrid props.addProduct', props.addProduct)
-  // console.log('me in product grid', props.me)
-  // console.log('props.product in brands grid', props.products)
+  const allProducts = props.products
+  const brandList = []
+  function brandListing() {
+    for (let i = 0; i < allProducts.length; i++) {
+      if (!brandList.includes(allProducts[i].brand)) {
+        brandList.push(allProducts[i].brand)
+      }
+    }
+    return brandList
+  }
+  const brandsOnly = brandListing()
+
   return (
     <div className="grid">
-      {props.products.map(product => (
-        <div key={product.id} className="single">
+      {brandsOnly.map(brand => (
+        <div key={brand.id} className="single">
           {/* <Link to={`/products/${product.brand}`}> */}
-          {/* <Product {...product} /> */}
-          <Product
-            prod={product}
-            // addProduct={props.addProduct}
-            me={props.me}
-            // user={props.user}
-          />
+          <Product brand={brand} me={props.me} />
           {/* </Link> */}
         </div>
       ))}

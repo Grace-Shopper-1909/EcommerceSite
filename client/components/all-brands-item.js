@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 const Product = props => {
   // const {brand, name, price, imageUrl, addProduct} = props
@@ -6,8 +7,8 @@ const Product = props => {
   // console.log('Product props.prod.addproduct', props.addProduct)
   // const result = props.addProduct(props.prod)
   // console.log('for product add button - the addProduct():', result)
-  const product = props.prod
-  console.log('PRODUCT', product)
+  // const product = props.prod
+  // console.log('PRODUCT', product)
   // const userId = props.user.id
 
   // const userId = props.match.params.userId
@@ -16,7 +17,9 @@ const Product = props => {
   return (
     <React.Fragment>
       <div className="product-title">
-        <h3>{product.brand}</h3>
+        <Link to={`/products/${props.brand}`}>
+          <h3>{props.brand}</h3>
+        </Link>
       </div>
     </React.Fragment>
   )
