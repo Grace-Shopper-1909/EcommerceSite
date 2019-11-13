@@ -28,7 +28,7 @@ class Product extends React.Component {
   }
 
   render() {
-    const product = this.props.prod
+    const product = this.props.product
     // const productId = product.id
     const userId = this.props.user.id
     // const qtyStart = product.cart.quantity || 1
