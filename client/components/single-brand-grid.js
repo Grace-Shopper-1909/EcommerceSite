@@ -10,7 +10,7 @@ const ProductGrid = props => {
           {/* <Link to={`/products/${product.brand}`}> */}
           {/* <Product {...product} /> */}
           <Product
-            prod={product}
+            product={product}
             addProduct={props.addProduct}
             me={props.me}
             user={props.user}
