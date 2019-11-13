@@ -12,6 +12,8 @@ import {
   Homepage
 } from './components'
 import {me} from './store'
+import AllBrands from './components/all-brands'
+import AllSingleBrand from './components/all-single-brand'
 
 /**
  * COMPONENT
@@ -31,6 +33,8 @@ class Routes extends Component {
         <Route exact path="/login" component={Login} />
         <Route exact path="/signup" component={Signup} />
         <Route exact path="/products" component={AllProducts} />
+        <Route exact path="/products/shopbybrand" component={AllBrands} />
+        <Route exact path="/products/:brand" component={AllSingleBrand} />
         <Route exact path="/cart/:userId" component={CartPage} />
         <Route exact path="/checkout/:userId" component={CheckoutPage} />
         {isLoggedIn && (

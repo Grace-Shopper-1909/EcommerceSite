@@ -11,6 +11,23 @@ router.get('/', async (req, res, next) => {
   }
 })
 
+// gets all products for a specific brand
+router.get('/:brand', async (req, res, next) => {
+  try {
+    const products = await Product.findAll({
+      where: {
+        brand: req.params.brand
+      }
+    })
+    console.log('REQ.PARAMS.BRAND IN ROUTE', req.params.brand)
+    console.log('PRODUCTS IN ROUTE', products)
+    res.send(products)
+  } catch (error) {
+    console.error(error)
+    next(error)
+  }
+})
+
 router.get('/:productId', async (req, res, next) => {
   try {
     const product = await Product.findByPk(req.params.productId)
