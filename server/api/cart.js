@@ -60,6 +60,25 @@ router.put('/reduce/:userId/:productId', (req, res, next) => {
     .catch(next)
 })
 
+//updates the quantity:
+
+router.put('/update/:userId/:productId', (req, res, next) => {
+  const userId = req.params.userId
+  const productId = req.params.productId
+  Cart.findOne({
+    where: {
+      productId,
+      userId
+    }
+  })
+    .then(cart => {
+      const newQuantity = req.body.quantity
+      cart.update({quantity: newQuantity})
+    })
+    .then(item => res.json(item))
+    .catch(next)
+})
+
 router.put('/:userId', async (req, res, next) => {
   try {
     const updatedCart = await Cart.update(
