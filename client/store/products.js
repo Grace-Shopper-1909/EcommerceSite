@@ -30,7 +30,7 @@ const gotProductsByBrand = products => ({
 export const getProducts = () => async dispatch => {
   try {
     const res = await axios.get('/api/products/')
-    // console.log('getProducts axios data', res)
+
     dispatch(gotProducts(res.data))
   } catch (err) {
     console.error(err)
@@ -39,9 +39,8 @@ export const getProducts = () => async dispatch => {
 
 export const getProductsByBrand = brand => async dispatch => {
   try {
-    console.log('brand in thunk', brand)
     const res = await axios.get(`/api/products/${brand}`)
-    console.log('getProducts AXIOS DATA', res.data)
+
     dispatch(gotProductsByBrand(res.data))
   } catch (err) {
     console.error(err)

@@ -24,17 +24,9 @@ const Cart = db.define('cart', {
   },
   shippingAddress: {
     type: Sequelize.TEXT
-    // allowNull: false,
-    // validate: {
-    //   notEmpty: true
-    // }
   },
   billingAddress: {
     type: Sequelize.TEXT
-    // allowNull: false,
-    // validate: {
-    //   notEmpty: true
-    // }
   },
   dateShipped: {
     type: Sequelize.DATE,
@@ -45,9 +37,5 @@ const Cart = db.define('cart', {
     defaultValue: null
   }
 })
-
-Cart.prototype.handleAddition = cart => {
-  console.log('got to handle addition on model, this cart  quantity is:', this)
-}
 
 module.exports = Cart

@@ -16,7 +16,7 @@ class CartItem extends React.Component {
   }
   loadQty() {
     const qtyStart = this.props.product.cart.quantity
-    console.log('qtyStart', qtyStart)
+
     this.setState({
       quantity: qtyStart
     })
@@ -38,7 +38,6 @@ class CartItem extends React.Component {
     const productId = product.id
     const userId = this.props.user.id
     const qtyStart = product.cart.quantity || 1
-    console.log('starting qty', qtyStart)
 
     return (
       <React.Fragment>

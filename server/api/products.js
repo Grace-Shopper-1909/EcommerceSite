@@ -19,8 +19,7 @@ router.get('/:brand', async (req, res, next) => {
         brand: req.params.brand
       }
     })
-    console.log('REQ.PARAMS.BRAND IN ROUTE', req.params.brand)
-    console.log('PRODUCTS IN ROUTE', products)
+
     res.send(products)
   } catch (error) {
     console.error(error)
