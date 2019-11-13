@@ -21,7 +21,7 @@ class AllProducts extends React.Component {
     console.log('PRODUCTS first', products)
     return (
       <div>
-        <Title title="Shop By Brand" />
+        <Title title={this.props.match.params.brand} />
 
         <div>
           <ProductGrid
