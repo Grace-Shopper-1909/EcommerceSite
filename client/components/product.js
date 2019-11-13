@@ -1,36 +1,109 @@
 import React from 'react'
+import {connect} from 'react-redux'
+import {updateQuantity, addProduct} from '../store'
 
-const Product = props => {
-  // const {brand, name, price, imageUrl, addProduct} = props
-  // console.log('props is this current product in map', props)
-  // console.log('Product props.prod.addproduct', props.addProduct)
-  // const result = props.addProduct(props.prod)
-  // console.log('for product add button - the addProduct():', result)
-  const product = props.prod
-  const userId = props.user.id
+class Product extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      quantity: 1
+    }
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleChange = this.handleChange.bind(this)
+  }
+  componentDidMount() {
+    // this.loadQty()
+  }
+  // loadQty() {
+  //   const qtyStart = this.props.product.cart.quantity
+  //   console.log('qtyStart', qtyStart)
+  //   this.setState({
+  //     quantity: qtyStart
+  //   })
+  // }
+  handleSubmit(event) {
+    const userId = this.props.user.id
+    const updatedProduct = {
+      id: this.props.product.id,
+      quantity: this.state.quantity
+    }
 
-  // const userId = props.match.params.userId
+    event.preventDefault()
+    this.props.addProduct(updatedProduct, userId)
+  }
+  handleChange(event) {
+    const {name, value} = event.target
+    this.setState({[name]: value})
+  }
 
-  // console.log('userProdObj', userProdObj)
-  return (
-    <React.Fragment>
-      <div className="product-title">
-        <h3>{product.brand}</h3>
+  render() {
+    const product = this.props.product
+    // const productId = product.id
+    const userId = this.props.user.id
+    // const qtyStart = product.cart.quantity || 1
+    console.log('props ', this.props)
+    console.log('userId ', userId)
 
-        <h3 id="bold">{name}</h3>
+    return (
+      <React.Fragment>
+        <div className="column flex-start">
+          <div className="product-title">
+            <h3>{product.brand}</h3>
 
-        <h3>${product.price / 100}</h3>
-      </div>
-      <img src={product.imageUrl} className="product-image" />
-      <button
-        className="add-to-cart"
-        type="button"
-        onClick={() => props.addProduct(product, userId)}
-      >
-        Add To Cart
-      </button>
-    </React.Fragment>
-  )
+            <h3 id="bold">{name}</h3>
+
+            <h3>${product.price / 100}</h3>
+          </div>
+          <img src={product.imageUrl} className="product-image" />
+
+          <form onSubmit={this.handleSubmit}>
+            <h3 id="bold">Qty:</h3>
+            <select
+              name="quantity"
+              value={this.state.quantity}
+              defaultValue={1}
+              selected={product.quantity}
+              onChange={this.handleChange}
+            >
+              <option value={1}> 1 </option>
+              <option value={2}> 2 </option>
+              <option value={3}> 3 </option>
+              <option value={4}> 4 </option>
+              <option value={5}> 5 </option>
+              <option value={6}> 6 </option>
+              <option value={7}> 7 </option>
+              <option value={8}> 8 </option>
+              <option value={9}> 9 </option>
+              <option value={10}> 10 </option>
+              ))}
+            </select>
+            <button
+              className="add-to-cart"
+              type="submit"
+              // onClick={() => addProduct(product, userId)}
+            >
+              Add To Cart
+            </button>
+          </form>
+        </div>
+      </React.Fragment>
+    )
+  }
 }
 
-export default Product
+const mapStateToProps = state => {
+  return {
+    user: state.user,
+    cart: state.cart
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateQuantity: (userId, productId, quantity) =>
+      dispatch(updateQuantity(userId, productId, quantity)),
+    addProduct: (product, userId) => dispatch(addProduct(product, userId))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product)
