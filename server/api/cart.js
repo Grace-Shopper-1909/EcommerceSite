@@ -67,10 +67,9 @@ router.post('/:userId', async (req, res) => {
   const productId = req.body.id
   const userId = req.params.userId
   const quantity = req.body.quantity
-
   try {
     const newCart = await Cart.create({productId, userId, quantity})
-    // console.log(newCart)
+
     res.json(newCart)
   } catch (error) {
     console.log(error)

@@ -139,6 +139,17 @@ form div {
   margin: 1%;
 }
 
+.add-to-cart:focus {
+  background-image: linear-gradient(
+    to right,
+    #4fa2f9,
+    #7a36b9,
+    #c039ba,
+    /* #cb5a81, */ #eb9a28
+  );
+  color: white;
+}
+
 .delete-btn {
   text-align: center;
   border-radius: 10px;

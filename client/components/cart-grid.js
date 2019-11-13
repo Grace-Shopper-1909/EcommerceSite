@@ -12,6 +12,7 @@ const CartGrid = props => {
           {/* <Link to={`/products/${product.id}`}> */}
           {/* <Product {...product} /> */}
           <CartItem
+            quantity={product.cart.quantity}
             product={product}
             deleteProduct={props.deleteProduct}
             me={props.me}
