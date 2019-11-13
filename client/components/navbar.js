@@ -51,7 +51,9 @@ const Navbar = props => {
           <Link to="/products">
             <h4>Shop All</h4>
           </Link>
-          <h4>Shop By Brand</h4>
+          <Link to="/products/shopbybrand">
+            <h4>Shop By Brand</h4>
+          </Link>
           <h4>Shop By Color</h4>
         </nav>
       </div>
