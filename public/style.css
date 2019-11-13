@@ -12,6 +12,10 @@ h1 {
 }
 h2 {
   text-align: center;
+  padding: 0;
+  margin: 0;
+  font-weight: normal;
+  color: black;
 }
 h3 {
   margin: 0;
@@ -92,6 +96,7 @@ form div {
   padding: 1.5%;
   border: 1px solid #d8d8d8;
   flex-direction: column;
+  align-items: center;
 }
 
 .center {
@@ -122,6 +127,30 @@ form div {
 .cart-image {
   align-self: center;
   max-height: 200px;
+  justify-self: center;
+}
+
+.qty {
+  text-align: center;
+  align-self: center;
+  border-radius: 10px;
+  width: 75px;
+  height: 6vh;
+  font-size: 1vw;
+  border: 1px solid black;
+  color: black;
+  justify-self: center;
+}
+
+.qty-cart {
+  text-align: center;
+  align-self: center;
+  border-radius: 10px;
+  width: 75px;
+  height: 4vh;
+  font-size: 1vw;
+  border: 1px solid black;
+  color: black;
   justify-self: center;
 }
 
@@ -191,6 +220,15 @@ form div {
   font-size: 1.5vw;
 }
 
+.order {
+  margin-left: 20%;
+  margin-right: 20%;
+  margin-bottom: 2%;
+  padding: 1.5%;
+  border: 1px solid #d8d8d8;
+
+  align-items: center;
+}
 #cart-icon {
   max-height: 2vw;
   max-width: 2vw;
@@ -219,7 +257,6 @@ form div {
 }
 
 #rainbow {
-  display: flex;
   justify-content: center;
   align-content: center;
   background-image: linear-gradient(
