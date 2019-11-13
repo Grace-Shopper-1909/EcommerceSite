@@ -5,30 +5,42 @@ const {green, red} = require('chalk')
 
 const users = [
   {
-    email: 'hg@hogwarts.com',
+    firstName: 'Emma',
+    lastName: 'Munley',
+    email: 'emma@gmail.com',
+    password: 'password'
+  },
+  {
+    firstName: 'Mallory',
+    lastName: 'LeeWong',
+    email: 'mallory@gmail.com',
     password: '1234'
   },
   {
-    email: 'hp@hogwarts.com',
-    password: '1234'
-  },
-  {
-    email: 'rw@hogwarts.com',
+    firstName: 'Olesia',
+    lastName: 'Guildi',
+    email: 'olesia@gmail.com',
     role: 'admin',
     password: '1234'
   },
   {
-    email: 'mistique@shield.com',
+    firstName: 'Natalie',
+    lastName: 'Lane',
+    email: 'natalie@gmail.com',
     role: 'user',
     password: '1234'
   },
   {
-    email: 'jamesh@yahoo.com',
+    firstName: 'Anna',
+    lastName: 'Wu',
+    email: 'anna@gmail.com',
     role: 'admin',
     password: '1234'
   },
   {
-    email: 'gog@yahoo.com',
+    firstName: 'Julissa',
+    lastName: 'Napaletano',
+    email: 'julissa@gmail.com',
     role: 'user',
     password: '1234'
   }
@@ -43,7 +55,7 @@ const products = [
       'https://www.essie.com/-/media/Project/Loreal/Brand-Sites/Essie/Americas/US/products_nailpolish_hd/enamels/sheers/095008000176/ESSIE-enamel-ballet-slippers-pack-shot.jpg?h=530&w=530&la=en-US&hash=74B022D9046E99FA64B87876D255CDEEF90D4B4B',
     color: 'pink',
     description: 'Your favorite pink nail polish perfect for any occasion.',
-    price: 699,
+    price: 900,
     rating: 40,
     quantity: 100
   },
@@ -55,7 +67,7 @@ const products = [
       'https://www.essie.com/-/media/Project/Loreal/Brand-Sites/Essie/Americas/US/products_nailpolish_hd/enamels/Blues/095008027890/ESSIE-enamel-blue-tiful-horizon-pack-shot.jpg?h=530&w=530&la=en-US&hash=5F47C94DCEAB9C339F4F18501AD745975A23850C',
     color: 'blue',
     description: 'A shimmery evening purple.',
-    price: 699,
+    price: 900,
     rating: 30,
     quantity: 30
   },
@@ -67,7 +79,7 @@ const products = [
       'https://www.opi.com/sites/default/files/styles/product_photos/public/im-not-really-a-waitress-islh08-infinite-shine-22777754108_24.jpg?itok=mxSQMza-',
     color: 'red',
     description: 'A bold red for breaking that glass ceiling.',
-    price: 130,
+    price: 1050,
     rating: 37,
     quantity: 121
   },
@@ -93,7 +105,7 @@ const products = [
     color: 'gold',
     description:
       'Spice it up with this ultra-glittery gold. Special glitter used provides the same shimmery pop you want with easier removal.',
-    price: 100,
+    price: 479,
     rating: 42,
     quantity: 250
   }
@@ -116,7 +128,7 @@ const carts = [
     date: '2019-2-2',
     dateShipped: '2019-2-5',
     dateDelivered: '2019-2-7',
-    quantity: 7,
+    quantity: 1,
     billingAddress: '78 Apple street, apt 2',
     shippingAddress: '78 Apple street, apt 2',
     total: 10,
@@ -131,7 +143,7 @@ const carts = [
     quantity: 7,
     billingAddress: '78 Apple street, apt 2',
     shippingAddress: '78 Apple street, apt 2',
-    total: 10,
+    total: 1,
     status: 'delivered',
     productId: 3,
     userId: 1
@@ -143,7 +155,7 @@ const carts = [
     quantity: 2,
     billingAddress: '110 5th avenue, floor 4',
     shippingAddress: '110 5th avenue, floor 4',
-    total: 50,
+    total: 5,
     status: 'shipped',
     productId: 4,
     userId: 5

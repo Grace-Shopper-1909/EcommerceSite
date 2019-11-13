@@ -56,9 +56,9 @@ export const updateOrder = productId => async dispatch => {
 }
 
 export const markPurchased = userId => async dispatch => {
-  console.log('userId in thunk', userId)
+  // console.log('userId in thunk', userId)
   const res = await axios.put(`/api/cart/${userId}`)
-  console.log('Axios request response data', res.data)
+  // console.log('Axios request response data', res.data)
   dispatch(markedPurchased(res.data))
 }
 
