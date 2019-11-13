@@ -34,11 +34,14 @@ class CartItem extends React.Component {
   }
 
   render() {
+    const cartArr = this.props.cart
     const product = this.props.product
     const productId = product.id
     const userId = this.props.user.id
     const qtyStart = product.cart.quantity || 1
-    console.log('starting qty', qtyStart)
+    console.log('cartArr', cartArr)
+    const foundQty = cartArr.filter(item => item.id === productId)[0]
+    console.log('foundQty', foundQty.cart.quantity)
 
     return (
       <React.Fragment>

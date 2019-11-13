@@ -7,8 +7,8 @@ const CartItemCheckout = props => {
   console.log('cart', cartArr)
   console.log('productId', productId)
 
-  const foundProduct = cartArr.filter(item => item.id === productId)[0]
-  console.log('foundProduct', foundProduct.cart.quantity)
+  const foundQty = cartArr.filter(item => item.id === productId)[0]
+  console.log('foundQty', foundQty.cart.quantity)
 
   return (
     <React.Fragment>
