@@ -1,11 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {
-  getCart,
-  deleteProduct,
-  addQuantity,
-  reduceQuantity
-} from '../store/cart'
+import {getCart, deleteProduct, updateQuantity} from '../store/cart'
 import CartGrid from './cart-grid'
 import {Link} from 'react-router-dom'
 
@@ -17,7 +12,6 @@ class CartPage extends React.Component {
   render() {
     const cart = this.props.cart
     const userId = this.props.user.id
-    console.log('USERID', userId)
 
     return (
       <div>
@@ -26,8 +20,6 @@ class CartPage extends React.Component {
           cart={cart}
           deleteProduct={this.props.deleteProduct}
           user={this.props.user}
-          addQuantity={this.props.addQuantity}
-          reduceQuantity={this.props.reduceQuantity}
         />
         <div className="center">
           <Link to={`/checkout/${userId}`}>
@@ -52,11 +44,7 @@ const mapDispatchToProps = dispatch => {
   return {
     getCart: userId => dispatch(getCart(userId)),
     deleteProduct: (productId, userId) =>
-      dispatch(deleteProduct(productId, userId)),
-    addQuantity: (userId, productId) =>
-      dispatch(addQuantity(userId, productId)),
-    reduceQuantity: (userId, productId) =>
-      dispatch(reduceQuantity(userId, productId))
+      dispatch(deleteProduct(productId, userId))
   }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(CartPage)

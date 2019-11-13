@@ -26,24 +26,43 @@ router.get('/:userId', async (req, res) => {
   }
 })
 
-router.put('/add/:userId/:productId', (req, res, next) => {
-  const userId = req.params.userId
-  const productId = req.params.productId
-  Cart.findOne({
-    where: {
-      productId,
-      userId
-    }
-  })
-    .then(cart => {
-      const newQuantity = cart.quantity + 1
-      cart.update({quantity: newQuantity})
-    })
-    .then(item => res.json(item))
-    .catch(next)
-})
+// router.put('/add/:userId/:productId', (req, res, next) => {
+//   const userId = req.params.userId
+//   const productId = req.params.productId
+//   Cart.findOne({
+//     where: {
+//       productId,
+//       userId
+//     }
+//   })
+//     .then(cart => {
+//       const newQuantity = cart.quantity + 1
+//       cart.update({quantity: newQuantity})
+//     })
+//     .then(item => res.json(item))
+//     .catch(next)
+// })
 
-router.put('/reduce/:userId/:productId', (req, res, next) => {
+// router.put('/reduce/:userId/:productId', (req, res, next) => {
+//   const userId = req.params.userId
+//   const productId = req.params.productId
+//   Cart.findOne({
+//     where: {
+//       productId,
+//       userId
+//     }
+//   })
+//     .then(cart => {
+//       const newQuantity = cart.quantity - 1
+//       cart.update({quantity: newQuantity})
+//     })
+//     .then(item => res.json(item))
+//     .catch(next)
+// })
+
+//updates the quantity:
+
+router.put('/update/:userId/:productId', (req, res, next) => {
   const userId = req.params.userId
   const productId = req.params.productId
   Cart.findOne({
@@ -53,7 +72,9 @@ router.put('/reduce/:userId/:productId', (req, res, next) => {
     }
   })
     .then(cart => {
-      const newQuantity = cart.quantity - 1
+      const newQuantity = req.body.quantity
+      console.log('req.body', req.body)
+      console.log('newQty backend', newQuantity)
       cart.update({quantity: newQuantity})
     })
     .then(item => res.json(item))
