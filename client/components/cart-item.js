@@ -46,23 +46,28 @@ class CartItem extends React.Component {
             <h3>${product.price / 100}</h3>
           </div>
 
-          <form onSubmit={this.handleSubmit}>
-            <h3 id="bold">Qty:</h3>
-            <select
-              name="quantity"
-              value={this.state.quantity}
-              defaultValue={0}
-              selected={product.quantity}
-              onChange={this.handleChange}
-            >
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => (
-                <option key={i} value={i}>
-                  {i}
-                </option>
-              ))}
-            </select>
-            <button type="submit">Update</button>
-          </form>
+          <div className="row">
+            <form onSubmit={this.handleSubmit}>
+              <h3 id="bold">Qty:</h3>
+              <select
+                name="quantity"
+                value={this.state.quantity}
+                defaultValue={0}
+                selected={product.quantity}
+                onChange={this.handleChange}
+                className="qty-cart"
+              >
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(i => (
+                  <option key={i} value={i}>
+                    {i}
+                  </option>
+                ))}
+              </select>
+              <button type="submit" className="delete-btn">
+                Update
+              </button>
+            </form>
+          </div>
 
           <button
             className="delete-btn"

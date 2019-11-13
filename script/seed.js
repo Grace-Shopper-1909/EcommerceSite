@@ -8,41 +8,53 @@ const users = [
     firstName: 'Emma',
     lastName: 'Munley',
     email: 'emma@gmail.com',
-    password: 'password'
+    password: 'password',
+    billingAddress: '23 Smith street, apt 34',
+    shippingAddress: '23 Smith street, apt 34'
   },
   {
     firstName: 'Mallory',
     lastName: 'LeeWong',
     email: 'mallory@gmail.com',
-    password: '1234'
+    password: '1234',
+    billingAddress: '110 5th avenue, floor 4',
+    shippingAddress: '110 5th avenue, floor 4'
   },
   {
     firstName: 'Olesia',
     lastName: 'Guildi',
     email: 'olesia@gmail.com',
     role: 'admin',
-    password: '1234'
+    password: '1234',
+    billingAddress: '110 5th avenue, floor 4',
+    shippingAddress: '110 5th avenue, floor 4'
   },
   {
     firstName: 'Natalie',
     lastName: 'Lane',
     email: 'natalie@gmail.com',
     role: 'user',
-    password: '1234'
+    password: '1234',
+    billingAddress: '110 5th avenue, floor 4',
+    shippingAddress: '110 5th avenue, floor 4'
   },
   {
     firstName: 'Anna',
     lastName: 'Wu',
     email: 'anna@gmail.com',
     role: 'admin',
-    password: '1234'
+    password: '1234',
+    billingAddress: '110 5th avenue, floor 4',
+    shippingAddress: '110 5th avenue, floor 4'
   },
   {
     firstName: 'Julissa',
     lastName: 'Napaletano',
     email: 'julissa@gmail.com',
     role: 'user',
-    password: '1234'
+    password: '1234',
+    billingAddress: '110 5th avenue, floor 4',
+    shippingAddress: '110 5th avenue, floor 4'
   }
 ]
 
@@ -92,7 +104,7 @@ const products = [
     color: 'yellow',
     description:
       'Add a pop of color to your look with this warm splash of tropical sunshine',
-    price: 130,
+    price: 1300,
     rating: 32,
     quantity: 85
   },

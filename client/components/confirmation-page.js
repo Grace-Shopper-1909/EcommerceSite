@@ -11,12 +11,35 @@ class ConfirmationPage extends React.Component {
 
   render() {
     const cart = this.props.cart
-    const userId = this.props.user.id
+    const user = this.props.user
 
     return (
       <div>
-        <h1>Order Confirmation</h1>
-        <h2>Success your order has been placed!</h2>
+        <h1>Order Confirmation Order #3452</h1>
+        <div className="order">
+          <br />
+          <h2>Name</h2>
+          <br />
+          <h2 id="bold">
+            {user.firstName} {user.lastName}
+          </h2>
+          <br />
+          <br />
+          <h2>Billing Address</h2>
+          <br />
+          <h2 id="bold">{user.billingAddress}</h2>
+          <br />
+          <br />
+          <h2>Shipping Address</h2>
+          <br />
+          <h2 id="bold">{user.shippingAddress}</h2>
+          <br />
+          <br />
+          <h2>Payment Method</h2>
+          <br />
+          <h2 id="bold">VISA ending in 6445</h2>
+        </div>
+
         <CartGridCheckout cart={cart} user={this.props.user} />
       </div>
     )

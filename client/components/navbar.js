@@ -8,6 +8,7 @@ import {logout} from '../store'
 const Navbar = props => {
   const {handleClick, isLoggedIn, user} = props
   const email = user.email
+  const name = user.firstName
   const userId = user.id
   return (
     <div className="column">
@@ -21,7 +22,7 @@ const Navbar = props => {
             <div id="right-nav" className="row">
               {/* The navbar will show these links after you log in */}
               <div id="register">
-                <p className="nav-links">Hello {email}</p>
+                <p className="nav-links">Hello {name}</p>
                 <a href="#" className="nav-links" onClick={handleClick}>
                   Logout
                 </a>
