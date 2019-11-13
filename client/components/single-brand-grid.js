@@ -14,9 +14,9 @@ const ProductGrid = props => {
           {/* <Product {...product} /> */}
           <Product
             prod={product}
-            // addProduct={props.addProduct}
+            addProduct={props.addProduct}
             me={props.me}
-            // user={props.user}
+            user={props.user}
           />
           {/* </Link> */}
         </div>
