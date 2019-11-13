@@ -15,12 +15,6 @@ class CheckoutPage extends React.Component {
     const cart = this.props.cart
     const userId = this.props.user.id
 
-    // console.log('USERID ON PROPS', this.props.user.id)
-    // console.log('USER', this.props.user)
-    // console.log('markedPurchased in render', this.props.markPurchased)
-    // console.log('THIS.props', this.props)
-    // console.log('ON CLICK', this.props.markPurchased(userId))
-
     return (
       <div>
         <h1>Checkout Page</h1>

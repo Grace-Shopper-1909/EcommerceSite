@@ -26,6 +26,24 @@ const CartItem = props => {
         >
           Delete
         </button>
+        <button
+          className="delete-btn"
+          type="button"
+          onClick={() => {
+            props.addQuantity(userId, productId)
+          }}
+        >
+          +
+        </button>
+        <button
+          className="delete-btn"
+          type="button"
+          onClick={() => {
+            props.reduceQuantity(userId, productId)
+          }}
+        >
+          -
+        </button>
       </div>
     </React.Fragment>
   )
