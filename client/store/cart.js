@@ -54,6 +54,11 @@ export const getCart = userId => async dispatch => {
   }
 }
 
+export const updateQuantity = (userId, productId) => async dispatch => {
+  await axios.put(`/api/cart/add/${userId}/${productId}`)
+  dispatch(getCart(userId))
+}
+
 export const deleteProduct = (productId, userId) => async dispatch => {
   try {
     await axios.delete(`/api/cart/${userId}/${productId}`)

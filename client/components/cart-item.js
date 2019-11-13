@@ -26,6 +26,15 @@ const CartItem = props => {
         >
           Delete
         </button>
+        <button
+          className="delete-btn"
+          type="button"
+          onClick={() => {
+            props.updateQuantity(userId, productId)
+          }}
+        >
+          +
+        </button>
       </div>
     </React.Fragment>
   )
