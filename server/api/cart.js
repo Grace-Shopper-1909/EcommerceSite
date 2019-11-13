@@ -106,6 +106,7 @@ router.delete('/:userId/:productId', async (req, res, next) => {
     if (item) {
       await item.destroy()
       res.status(204).end()
+      console.log('Item was deleted')
     } else {
       console.log('Item could not be updated')
       res.status(404)
