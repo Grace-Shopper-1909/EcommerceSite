@@ -57,7 +57,7 @@ export const getCart = userId => async dispatch => {
 export const deleteProduct = (productId, userId) => async dispatch => {
   try {
     await axios.delete(`/api/cart/${userId}/${productId}`)
-    dispatch(deleteProduct(productId, userId))
+    dispatch(deletedProduct(productId, userId))
   } catch (err) {
     console.error(err)
   }
@@ -92,11 +92,9 @@ export default function(state = initalState, action) {
     case GOT_CART:
       return action.cart
     case DELETED_PRODUCT: {
-      const updatedProducts = state.filter(
-        product => product.id !== action.productId
-      )
-      console.log(updatedProducts)
-      return [...state, updatedProducts]
+      const newState = state.filter(product => product.id !== action.productId)
+      console.log('newState', newState)
+      return newState
     }
     case ADDED_PRODUCT:
       return [...state, action.userProdObj]
