@@ -17,8 +17,8 @@ const ProductGrid = props => {
 
   return (
     <div className="grid">
-      {brandsOnly.map(brand => (
-        <div key={brand.id} className="single">
+      {brandsOnly.map((brand, idx) => (
+        <div key={idx} className="single">
           {/* <Link to={`/products/${product.brand}`}> */}
           <Product brand={brand} me={props.me} />
           {/* </Link> */}
