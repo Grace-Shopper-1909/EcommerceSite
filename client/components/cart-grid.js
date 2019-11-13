@@ -16,7 +16,8 @@ const CartGrid = props => {
             deleteProduct={props.deleteProduct}
             me={props.me}
             user={props.user}
-            updateQuantity={props.updateQuantity}
+            addQuantity={props.addQuantity}
+            reduceQuantity={props.reduceQuantity}
             className="row"
           />
           {/* </Link> */}
