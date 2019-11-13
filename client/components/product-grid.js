@@ -4,7 +4,7 @@ import Product from './product'
 
 const ProductGrid = props => {
   // console.log('productGrid props.addProduct', props.addProduct)
-  // console.log('me in product grid', props.me)
+  console.log('cart in product grid', props.cart)
   return (
     <div className="grid">
       {props.products.map(product => (
@@ -12,7 +12,8 @@ const ProductGrid = props => {
           {/* <Link to={`/products/${product.id}`}> */}
           {/* <Product {...product} /> */}
           <Product
-            prod={product}
+            product={product}
+            cart={props.cart}
             addProduct={props.addProduct}
             me={props.me}
             user={props.user}

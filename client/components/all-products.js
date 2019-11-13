@@ -21,6 +21,7 @@ class AllProducts extends React.Component {
           <ProductGrid
             products={products}
             user={this.props.user}
+            cart={this.props.cart}
             addProduct={this.props.addProduct}
             me={this.props.me}
             className="grid"
